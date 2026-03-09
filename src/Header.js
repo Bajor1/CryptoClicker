@@ -31,6 +31,9 @@ function Header() {
         <div className="smallTile"></div>
       </div>
       <h1>Crypto Clicker</h1>
+      <button className="pulpitBG"><div className="buttonFG">Puplit</div></button>
+      <button className="componentsBG"><div className="buttonFG">Komponenty</div></button>
+      <button className="shopBG"><div className="buttonFG">Sklep</div></button>
     </div>
   );
 }
