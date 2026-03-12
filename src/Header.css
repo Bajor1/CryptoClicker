@@ -70,7 +70,7 @@ button
   float: right;
   margin-right: 10px;
   border:var(--text-color-special) 2px solid;
-  filter:contrast(1) brightness(1) hue-rotate(0deg) grayscale(50%);
+  filter:contrast(1) hue-rotate(0deg) grayscale(50%);
   transition: filter 1s;
   background-size: cover;
   overflow: hidden;
