@@ -4,6 +4,7 @@ import './index.css';
 import Header from './Header';
 import Components from './Components';
 import reportWebVitals from './reportWebVitals';
+import Monitor from './Monitor';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
