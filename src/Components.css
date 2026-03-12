@@ -1,0 +1,35 @@
+body
+{
+  margin: 0;
+}
+.Components
+{
+  width: 100%;
+  height: calc(100vh - 90px);
+  padding-top:30px;
+  background-image: url("misc/floorBG.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.case
+{
+  
+  width: 1000px;
+  height: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("casePC/case.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 0px 32px 20px rgb(0, 0, 0);
+}
+.caseCover
+{
+  
+  width: 1000px;
+  height: 850px;
+  background-image: url("casePC/caseCover.png");
+  background-size: cover;
+  background-position: center;
+  filter:brightness(100%);
+}
