@@ -10,6 +10,7 @@ body
   background-image: url("misc/floorBG.jpg");
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 .case
 {

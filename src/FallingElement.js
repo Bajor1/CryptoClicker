@@ -3,7 +3,7 @@ import './App.css';
 import './Components.css';
 import { useState, useRef, useEffect } from "react";
 
-function Components() {
+function FallingElement() {
   const [translate, setTranslate] = useState({ x: -15, y: -20, r: 0});
   const caseRef = useRef(null);
 
@@ -55,12 +55,6 @@ function Components() {
     // wszystkie zmienna maja miec przyspieczenie, moga to byc useState
     
   }
-
-  // 0 - obudowa
-  // 1 - lewa górna śróbka
-  // 2 - prawa górna śróbka
-  // 3 - lewa dolna śróbka
-  // 4 - prawa dolna śróbka
   function inciateFall(elementID)
   {
     setVelocity([
@@ -75,15 +69,11 @@ function Components() {
 
 
   return (
-    <div className="Components">
-      <div className="case">
-        <div onClick={() => inciateFall(0)} className="caseCover" 
+        <div onClick={() => inciateFall(0)} className="FallingElement" 
         ref={caseRef}
         style={{ transform: `translateX(${translate.x}px) translateY(${translate.y}px) rotate(${translate.r}deg)` }}
         ></div>
-      </div>
-    </div>
   );
 }
 
-export default Components;
+export default FallingElement;
