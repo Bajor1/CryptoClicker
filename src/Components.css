@@ -10,6 +10,7 @@ body
   background-image: url("misc/floorBG.jpg");
   background-size: cover;
   background-position: center;
+  
 }
 .case
 {
@@ -32,4 +33,30 @@ body
   background-size: cover;
   background-position: center;
   filter:brightness(100%);
+}
+.screw
+{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("casePC/bolt.png");
+  background-size: cover;
+  background-position: center;
+  filter:brightness(150%);
+}
+.screw:nth-child(2)
+{
+  margin: -820px 0 0 0px
+}
+.screw:nth-child(3)
+{
+  margin: -820px 0 0 800px
+}
+.screw:nth-child(4)
+{
+  margin: -120px 0 0 800px
+}
+.screw:nth-child(5)
+{
+  margin: -120px 0 0 0px
 }
