@@ -10,6 +10,8 @@ function FallingElement(props) {
   //wartosci kierunkowe:
   const [Velocity, setVelocity] = useState([0, 0, 0]);
   const [fallingEnabled, setFallingEnabled] = useState(false);
+  const [unscrewEnabled, setUnscrewEnabled] = useState(false);
+  const [unscrewHappened, setUnscrewHappened] = useState(false);
   const [fallCount, setFallCount] = useState(0);
   useEffect(() => {
     if (!fallingEnabled) return;
@@ -25,29 +27,86 @@ function FallingElement(props) {
       return prev + 1;
     });
     }, 15)
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval);
+
+    }
   }, [fallingEnabled])
 
+  // tylko do SCREW ==============================================================
+  useEffect(() => {
+    if (!unscrewEnabled) return;
+    const interval = setInterval(() => {
+    
+      // obrot
+      setVelocity(prev => {
+      const newVelocity = [
+        prev[0],
+        prev[1],
+        prev[2] - (0.1 + Math.abs(prev[2]) / 100)
+      ];
+    
+      console.log(newVelocity);
+    
+      setTranslate(pos => ({
+        x: pos.x + newVelocity[0],
+        y: pos.y - newVelocity[1],
+        r: pos.r - newVelocity[2]
+      }));
+    
+      return newVelocity;
+    });
+    
+    setFallCount(prev => {
+      if (prev >= 100) {
+        clearInterval(interval);
+        setUnscrewEnabled(false);
+        return 0;
+      }
+      return prev + 1;
+    });
+    }, 15)
+    return () => {
+  clearInterval(interval);
+  setUnscrewHappened(true);
+};
+  }, [unscrewEnabled])
+ // ==============================================================================
   function FunnyFalling()
   {
-      setVelocity(prev => {
+    setVelocity(prev => {
+      const newVelocity = [
+        prev[0] + (prev[0] / 100),
+        Math.floor(prev[1] - (1 + Math.abs(prev[1]) / 200)),
+        prev[2] + (0.01 + Math.abs(prev[2]) / 100)
+      ];
+    
+      console.log(newVelocity);
+    
+      setTranslate(pos => ({
+        x: pos.x + newVelocity[0],
+        y: pos.y - newVelocity[1],
+        r: pos.r - newVelocity[2]
+      }));
+    
+      return newVelocity;
+    });
+  }
 
-        const newVelocity = [
-          prev[0] + (prev[0] / 100),
-          Math.floor(prev[1] - (1 + Math.abs(prev[1]) / 200)),
-          prev[2] - (0.001 + Math.abs(prev[2]) / 1000)
-        ];
-      
-        console.log(newVelocity);
-      
-        setTranslate(pos => ({
-          x: pos.x + newVelocity[0],
-          y: pos.y - newVelocity[1],
-          r: pos.r - newVelocity[2]
-        }));
-      
-        return newVelocity;
-      });
+  function IniciateScrewRotation()
+  {
+    if (unscrewHappened == true)
+    {
+      inciateFall();
+    }
+    else
+    {
+      setUnscrewEnabled(true);
+    }
+  }
+
+      //pamietaj
+
       //dodaj jakas losowa zmienna kierunku lewo prawo spadania
       //dodaj losowa zmienna obrodu
       //zmienna kierunku góra doł
@@ -75,13 +134,7 @@ function FallingElement(props) {
 //      
 //        return newVelocity;
 //      });
-
-
-
-
-
-  }
-  function inciateFall(elementID)
+  function inciateFall()
   {
     setVelocity([
     (Math.random() - 0.5) * 10, // losowy X [-5,5]
@@ -89,13 +142,14 @@ function FallingElement(props) {
     (Math.random() - 0.5) * 2   // losowa rotacja
   ]);
   setFallingEnabled(true);
+  props.props[1]();
   }
 
   //teraz dodaj useEffect aby wywolac funkcje spadnai iles razy
 
 
   return (
-        <div onClick={() => inciateFall(0) } className={props.props}
+        <div onClick={props.props[0] == "screw" ? IniciateScrewRotation : inciateFall } className={props.props[0]}
         ref={caseRef}
         style={{ transform: `translateX(${translate.x}px) translateY(${translate.y}px) rotate(${translate.r}deg)` }}
         ></div>
