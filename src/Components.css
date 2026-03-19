@@ -149,3 +149,101 @@ body
   95%  { clip-path: inset(45% 0 25% 0); transform: translateX(0px);}
   100% { clip-path: inset(0 0 0 0);     transform: translateX(5px);}
 }
+
+.motherboardInput
+{
+  width: 435px;
+  height: 440px;
+  border: var(--text-color-special) 2px dashed;
+  margin-top:-730px;
+  margin-left:130px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.motherboardInput:hover .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.powerSupplyInput
+{
+  width: 425px;
+  height: 205px;
+  border: var(--text-color-special) 2px dashed;
+  margin-top:15px;
+  margin-left:90px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.powerSupplyInput:hover .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.fansInput
+{
+  width: 100px;
+  height: 500px;
+  border: var(--text-color-special) 2px dashed;
+  margin-top:-525px;
+  margin-left:790px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.fansInput:hover .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.visual {
+  width: 100%;
+  height: 100%;
+  transform: rotate3D(1, 0, 0, 90deg) rotate(90deg) scale(200%);
+  transition: 0.2s;
+  pointer-events: none;
+  display: grid;
+}
+.effectApplier
+{
+  pointer-events: none;
+  width:100%;
+  height:100%;
+  backdrop-filter: contrast(2) invert() hue-rotate(90deg);
+  animation-name:hover;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  grid-area: 1 / 1;
+}
+.effectApplier:nth-child(2)
+{
+  animation-delay: 0.3s;
+  animation-name:hover2;
+}
+.effectApplier:nth-child(3)
+{
+  animation-delay: 0.6s;
+  animation-name:hover;
+}
+.effectApplier:nth-child(4)
+{
+  animation-delay: 0.9s;
+  animation-name:hover2;
+}
+
+
+@keyframes hover
+{
+  0%   {transform: translate(0px, 10px) rotate(0deg);}
+  25%  {transform: translate(10px, 0px) rotate(1deg);}
+  50%  {transform: translate(0px, -10px) rotate(0deg);}
+  75%  {transform: translate(-10px, 0px) rotate(-1deg);}
+  100% {transform: translate(0px, 10px) rotate(0deg);}
+}
+@keyframes hover2
+{
+  0%   {transform: translate(0px, 10px) rotate(1deg);}
+  25%  {transform: translate(-10px, 0px) rotate(0deg);}
+  50%  {transform: translate(0px, -10px) rotate(-1eg);}
+  75%  {transform: translate(10px, 0px) rotate(0deg);}
+  100% {transform: translate(0px, 10px) rotate(1deg);}
+}
