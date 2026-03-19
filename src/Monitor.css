@@ -1,10 +1,24 @@
-.monitor {
+/* Kontener tła */
+.bkg {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.monitor { 
   position: relative;
   width: 100%;
   max-width: 900px;
   margin: auto;
+  z-index: 1; /* aby ekran był nad tłem */
 }
-
 
 .screen {
   position: absolute;
@@ -15,6 +29,7 @@
   overflow: hidden;
   
   font-size: 12px;
+  z-index: 2; /* nad monitor-img */
 
   /* Szum generowany CSS */
 }
@@ -64,12 +79,14 @@
     transparent 3px
   );
   opacity: 0.2;
+  z-index: 3; /* nad ikonami */
 }
 
 .monitor-img {
   width: 100%;
   height: auto;
   display: block;
+  z-index: 0; /* poniżej ekranu i ikon */
 }
 
 .icon {
@@ -77,7 +94,8 @@
   text-align: center;
   display: block;
   margin: auto;
-   width: 6em;
+  width: 6em;
+  z-index: 4; /* nad screen i scanlines */
 }
 
 .icon button {
@@ -97,39 +115,16 @@
   color: white;
   font-size: 0.9em;
   line-height: 1.1; /* tekst się skaluje */
-  
 }
-
 
 .icon button:hover {
   background: rgba(3, 101, 146, 0.15);
   border-radius: 4px;
-  
 }
 
-/* pozycje */
-
-.icon1 {
-  top: 5%;
-  left: 5%;
-}
-
-.icon2 {
-  top: 25%;
-  left: 5%;
-}
-
-.icon3 {
-  top: 5%;
-  left: 17%;
-}
-
-.icon4 {
-  top: 45%;
-  left: 5%;
-}
-
-.icon5 {
-  top: 5%;
-  left: 35%;
-}
+/* pozycje ikon */
+.icon1 { top: 5%; left: 7%; }
+.icon2 { top: 25%; left: 7%; }
+.icon3 { top: 5%; left: 23%; }
+.icon4 { top: 45%; left: 7%; }
+.icon5 { top: 5%; left: 40%; }
