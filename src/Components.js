@@ -25,6 +25,32 @@ function Components() {
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
+        <div className="motherboardInput">
+          <div className="visual">
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+          </div>
+        </div>
+
+        <div className="powerSupplyInput">
+          <div className="visual">
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+          </div>
+        </div>
+
+        <div className="fansInput">
+          <div className="visual">
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+            <div className="effectApplier"></div>
+          </div>
+        </div>
       </div>
 
 
@@ -44,7 +70,8 @@ function Components() {
                   : secretCounter
             }
           </div>
-          <div className="counterOverlay"></div>
+          <div className="counterOverlay">
+          </div>
         </div>
       </div>
     </div>
