@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './Components.css';
 import FallingElement from './FallingElement.js'
+import ComponentsShelf from './ComponentsShelf.js'
 import { useState, useRef, useEffect } from "react";
 
 function Components() {
@@ -53,6 +54,9 @@ function Components() {
         </div>
       </div>
 
+      {//półka na komponenty, zawartosc zalezna od wyslanej tablicy
+      }
+      <ComponentsShelf></ComponentsShelf>
 
       {//easter egg:
       }

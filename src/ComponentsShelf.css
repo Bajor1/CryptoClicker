@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+body
+{
+  margin: 0;
+  user-select: none;
+}
+.ComponentsShelf
+{
+  position: absolute;
+  height: 100vh;
+  width:500px;
+  background-image: url("misc/shelf.jpg");
+  top:0;
+  right: 0;
+  filter: grayscale(0.2) brightness(0.8);
+  background-size: cover;
+}
+.shelfEnd
+{
+  height: 100vh;
+  width:50px;
+  background-image: url("misc/shelf.jpg");
+  background-position-x: right;
+  filter: grayscale(0.4) brightness(0.7);
+  float: left;
+}
+.componentsList
+{
+  overflow-x: hidden;
+  height: calc(100vh - 60px);
+  width:90%;
+  float:right;
+  overflow-y:scroll;
+}
+.componentItem
+{
+  margin: 20px;
+  float: left;
+  width: 90%;
+  height: 240px;
+  background-image: url("componentShelfItems/shelfItemBG.png");
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.stickyNote
+{
+  height: 230px;
+  width: 200px;
+  background-image: url("componentShelfItems/stickyNote.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  font-family: 'Rock Salt', cursive;
+}
+.stickyNoteInside
+{
+  text-align: center;
+  opacity: 0.7;
+  padding: 30px 50px 20px 50px;
+  padding-top:50px;
+  padding-left: 30px;
+  font-size:10px;
+}
+.componentItem:hover
+{
+  animation: shake 1s linear infinite;
+}
+@keyframes shake
+{
+  0%  {transform: scale(102%) rotate(0deg);}
+  25% {transform: scale(102%) rotate(2deg);}
+  50% {transform: scale(102%) rotate(0deg);}
+  75% {transform: scale(102%) rotate(-2deg);}
+  100%{transform: scale(102%) rotate(0deg);}
+}
+.componentItem .visual
+{
+  margin-top: -155px;
+  margin-left:90px
+}
+.componentItem:hover .visual
+{
+  transform: translateY(0px) translateX(-90px);
+  width:200%;
+  height:105%;
+}
+.componentItem .visual .effectApplier
+{
+  backdrop-filter: contrast(1.3) invert() hue-rotate(90deg);
+}
