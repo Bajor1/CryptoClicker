@@ -7,11 +7,21 @@ import { X } from "lucide-react";
 
 function Window({ title, onClose, children, onFocus, zIndex }) {
   const [pos, setPos] = useState({ x: 50, y: 50 });
+  const [size, setSize] = useState({ width: 300, height: 200 });
+
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [prevState, setPrevState] = useState(null);
+
   const dragging = useRef(false);
+  const resizing = useRef(false);
+
   const offset = useRef({ x: 0, y: 0 });
   const windowRef = useRef(null);
 
+  // ---------------- DRAG ----------------
   const handleMouseDown = (e) => {
+    if (isMaximized) return;
+
     dragging.current = true;
     onFocus();
 
@@ -38,7 +48,6 @@ function Window({ title, onClose, children, onFocus, zIndex }) {
     let newX = e.clientX - screenRect.left - offset.current.x;
     let newY = e.clientY - screenRect.top - offset.current.y;
 
- 
     newX = Math.max(0, Math.min(newX, screenRect.width - winRect.width));
     newY = Math.max(0, Math.min(newY, screenRect.height - winRect.height));
 
@@ -51,23 +60,109 @@ function Window({ title, onClose, children, onFocus, zIndex }) {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
+  // ---------------- RESIZE ----------------
+  const handleResizeMouseDown = (e) => {
+    e.stopPropagation();
+    resizing.current = true;
+
+    document.addEventListener("mousemove", handleResizeMove);
+    document.addEventListener("mouseup", handleResizeUp);
+  };
+
+  const handleResizeMove = (e) => {
+    if (!resizing.current || isMaximized) return;
+
+    const screen = document.querySelector(".screen");
+    const screenRect = screen.getBoundingClientRect();
+
+    let newWidth = e.clientX - windowRef.current.getBoundingClientRect().left;
+    let newHeight = e.clientY - windowRef.current.getBoundingClientRect().top;
+
+    newWidth = Math.max(200, Math.min(newWidth, screenRect.width));
+    newHeight = Math.max(100, Math.min(newHeight, screenRect.height));
+
+    setSize({ width: newWidth, height: newHeight });
+  };
+
+  const handleResizeUp = () => {
+    resizing.current = false;
+    document.removeEventListener("mousemove", handleResizeMove);
+    document.removeEventListener("mouseup", handleResizeUp);
+  };
+
+  // ---------------- MAXIMIZE ----------------
+  const toggleMaximize = () => {
+    const screen = document.querySelector(".screen");
+
+    if (!isMaximized) {
+      setPrevState({
+        x: pos.x,
+        y: pos.y,
+        width: size.width,
+        height: size.height,
+      });
+
+      setPos({ x: 0, y: 0 });
+      setSize({
+        width: screen.clientWidth,
+        height: screen.clientHeight,
+      });
+    } else {
+      setPos({ x: prevState.x, y: prevState.y });
+      setSize({
+        width: prevState.width,
+        height: prevState.height,
+      });
+    }
+
+    setIsMaximized(!isMaximized);
+  };
+
   return (
     <div
       ref={windowRef}
       className="window"
-      style={{ top: pos.y, left: pos.x, zIndex, position: 'absolute' }}
+      style={{
+        top: pos.y,
+        left: pos.x,
+        zIndex,
+        position: 'absolute',
+        width: size.width,
+        height: size.height
+      }}
       onMouseDown={onFocus}
     >
-      <div className="window-header" onMouseDown={handleMouseDown}>
+      <div
+        className="window-header"
+        onMouseDown={handleMouseDown}
+        onDoubleClick={toggleMaximize}
+      >
         <span>{title}</span>
-        <button onClick={onClose}>
-          <X size={16} />
-        </button>
+
+        <div className="window-buttons">
+          <button onClick={toggleMaximize} className='window-button'>
+            {isMaximized ? "🗗" : "☐"}
+          </button>
+
+          <button onClick={onClose} className='window-button'>
+            <X size={20} />
+          </button>
+        </div>
       </div>
-      <div className="window-content">{children}</div>
+
+      <div className="window-content">
+        {children}
+      </div>
+
+      <div
+        className="resize-handle"
+        onMouseDown={handleResizeMouseDown}
+      />
     </div>
   );
 }
+
+
 function Monitor() {
   const [openWindows, setOpenWindows] = useState([]);
   const [zCounter, setZCounter] = useState(10);
