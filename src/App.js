@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+
+import Components from './Components';
+import Monitor from './Monitor';
+import Shop from './Shop';
+import Header from './Header';
 
 function App() {
+  const [currentUI, setCurrentUI] = useState("Monitor");
+  
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setUI = {setCurrentUI}></Header>
+      {currentUI == "Monitor" ? <Monitor></Monitor> : 
+      currentUI == "Components" ? <Components></Components> : 
+    /*currentUI == "shop"*/ <shop></shop> 
+      }
     </div>
   );
 }
