@@ -413,7 +413,50 @@ function App() {
     }
   ];
 
+  var cooling = [
+    {
+      id:0,
+      brand: "LoudiumPC",
+      name: "CoolPack v1",
+      cooling: 20,
+      powerCost: 5,
+      cost: 20
+    }
+  ]
 
+    const [bitCoin, setBitCoin] = useState(0);
+    const [money, setMoney] = useState(0);
+    const [BitCoinIncome, setBitCoinIncome] = useState(0);
+
+    const [selectedMotherBoardID, setSelectedMotherBoardID] = useState(0);
+    const [selectedPowerSupplyID, setSelectedPowerSupplyID] = useState(0);
+    const [selectedCoolingID, setSelectedCoolingID] = useState(0);
+    const [selectedGPUsID, setSelectedGPUsID] = useState([0]);
+    const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
+    const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
+
+    function calculateIncome()
+    {
+      let currentTickIncome = 0;
+      for (let i = 0; i<=motherBoard[selectedMotherBoardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
+      {
+        //liczenie roznicy 
+      }
+
+
+      for (let i = 0; i<=motherBoard[selectedMotherBoardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
+      {
+        //liczenie przychodu
+        if (selectedGPUsID[i] != -1)
+        {
+          //currentTickIncome += GPU[selectedGPUsID[i]].computingPower * (Math.floor((Math.random()* (max-min) + min)*100)/100) /10000000
+        }
+        else
+        {
+          //brak GPU na slocie
+        }
+      }
+    }
   return (
     <div className="App">
       <Header setUI = {setCurrentUI}></Header>
