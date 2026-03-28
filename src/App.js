@@ -295,7 +295,7 @@ function App() {
       id:7,
       brand: "Nicorn",
       name: "U600 PRO",
-      slots: 8,
+      slots: 6,
       chipset: "Intel",
       cost: 4000
     },
