@@ -3,6 +3,9 @@ import './App.css';
 import './Components.css';
 import FallingElement from './FallingElement.js'
 import ComponentsShelf from './ComponentsShelf.js'
+
+import NicornMB from './componentsCode/motherboard/NicornMB.js'
+
 import { useState, useRef, useEffect } from "react";
 
 function Components() {
@@ -27,6 +30,7 @@ function Components() {
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <div className="motherboardInput">
+          <NicornMB></NicornMB>
           <div className="visual">
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>

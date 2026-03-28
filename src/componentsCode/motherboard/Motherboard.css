@@ -1,0 +1,30 @@
+.NicornMB
+{
+  background-image: url("./../../components/motherboard/nicorn/nicornTemplate.png");
+  width: 435px;
+  height: 440px;
+  padding-top: 1px; /* 🔥 blokuje margin collapsing */
+}
+.NicornMBSlot
+{
+  background-image: url("./../../components/motherboard/nicorn/nicornInputGPU.png");
+  width: 135px;
+  height: 17px;
+  margin-left: 70px;
+  margin-top:20px;
+}
+
+.NicornMBSlot:nth-child(1)
+{
+  margin-left: 70px;
+  margin-top:230px;
+}
+
+.NicornMBSlot:hover > .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.motherboardInput:hover.NicornMBSlot:hover > .motherboardInput.visual {
+  transform: rotate3D(1, 0, 0, 90deg) rotate(90deg) scale(2) !important;
+}

@@ -161,9 +161,14 @@ body
   transition: 0.5s;
   cursor: pointer;
 }
-.motherboardInput:hover .visual
+.motherboardInput:hover > .visual
 {
   transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.motherboardInput > .visual
+{
+  margin-top:-100%;
 }
 
 .powerSupplyInput
@@ -176,7 +181,7 @@ body
   transition: 0.5s;
   cursor: pointer;
 }
-.powerSupplyInput:hover .visual
+.powerSupplyInput:hover > .visual
 {
   transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
 }
@@ -191,7 +196,7 @@ body
   transition: 0.5s;
   cursor: pointer;
 }
-.fansInput:hover .visual
+.fansInput:hover > .visual
 {
   transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
 }
