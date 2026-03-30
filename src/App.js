@@ -10,7 +10,7 @@ import Header from './Header';
 function App() {
   const [currentUI, setCurrentUI] = useState("Monitor");
   
-  var GPU = [
+  const GPU = [
     {
       id: 0,
       brand: "Compressio",
@@ -234,10 +234,10 @@ function App() {
   ];
 
 
-  var motherBoard = [
+  const motherboard = [
     {
       id:0,
-      brand: "nicorn",
+      brand: "Nicorn",
       name: "U400",
       slots: 2,
       chipset: "AXD",
@@ -301,7 +301,7 @@ function App() {
     },
   ];
 
-  var powerSupply = [
+  const powerSupply = [
     {
       id:0,
       brand:"BurglerPower",
@@ -413,7 +413,7 @@ function App() {
     }
   ];
 
-  var cooling = [
+  const cooling = [
     {
       id:0,
       brand: "LoudiumPC",
@@ -428,23 +428,73 @@ function App() {
     const [money, setMoney] = useState(0);
     const [BitCoinIncome, setBitCoinIncome] = useState(0);
 
-    const [selectedMotherBoardID, setSelectedMotherBoardID] = useState(0);
+    const [selectedMotherboardID, setSelectedMotherboardID] = useState(0);
     const [selectedPowerSupplyID, setSelectedPowerSupplyID] = useState(0);
     const [selectedCoolingID, setSelectedCoolingID] = useState(0);
     const [selectedGPUsID, setSelectedGPUsID] = useState([0]);
     const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
+    const [stashedGPUs, setStashedGPUs] = useState([2, 1, 1]);
+    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([]);
+    const [stashedCoolings, setStashedCoolings] = useState([]);
+    const [stashedMotherboards, setStashedMotherboards] = useState([]);
+
+
+
+    function changeComponent(type, insertedComponentID, stashedComponentID)
+    {
+      switch(type)
+      {
+        case "motherboard":
+        {
+          setSelectedMotherboardID(insertedComponentID);
+          setSelectedGPUsID(prev => {
+            const newArray = [...prev];
+            newArray[insertedComponentID] -= 1;
+            return newArray;
+          });
+
+          setSelectedGPUsID(prev => {
+            const newArray = [...prev];
+            newArray[stashedComponentID] += 1;
+            return newArray;
+          });
+          break;
+        }
+        case "GPU":
+        {
+
+          break;
+        }
+        case "powerSupply":
+        {
+
+          break;
+        }
+        case "cooling":
+        {
+
+          break;
+        }
+        default:
+        {
+
+          break;
+        }
+      }
+    }
+
     function calculateIncome()
     {
       let currentTickIncome = 0;
-      for (let i = 0; i<=motherBoard[selectedMotherBoardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
+      for (let i = 0; i<=motherboard[selectedMotherboardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
       {
         //liczenie roznicy 
       }
 
 
-      for (let i = 0; i<=motherBoard[selectedMotherBoardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
+      for (let i = 0; i<=motherboard[selectedMotherboardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
       {
         //liczenie przychodu
         if (selectedGPUsID[i] != -1)
@@ -461,7 +511,30 @@ function App() {
     <div className="App">
       <Header setUI = {setCurrentUI}></Header>
       {currentUI == "Monitor" ? <Monitor></Monitor> : 
-      currentUI == "Components" ? <Components></Components> : 
+      currentUI == "Components" ? <Components 
+        //wszystkie posiadanie komponenty
+        stashedCoolings={stashedCoolings} 
+        stashedPowerSupplies={stashedPowerSupplies} 
+        stashedGPUs={stashedGPUs}
+        stashedMotherboards={stashedMotherboards}
+
+        //obecnie wlozone komponenty
+        selectedCoolingID={selectedCoolingID}
+        selectedPowerSupplyID={selectedPowerSupplyID}
+        selectedGPUsID={selectedGPUsID}
+        selectedMotherboardID={selectedMotherboardID}
+        
+        //stale wartosci
+        cooling={cooling}
+        powerSupply={powerSupply}
+        GPU={GPU}
+        motherboard={motherboard}
+
+        //funkcje
+        calculateIncome={calculateIncome}
+        changeComponent={changeComponent}
+        
+        ></Components> : 
     /*currentUI == "Shop" (else statement)*/ <Shop></Shop> }
     </div>
   );

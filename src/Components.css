@@ -253,3 +253,7 @@ body
   75%  {transform: translate(10px, 0px) rotate(0deg);}
   100% {transform: translate(0px, 10px) rotate(1deg);}
 }
+.hideShelf
+{
+  transform: translateX(1000px);
+}
