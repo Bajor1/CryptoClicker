@@ -16,6 +16,10 @@ body
   filter: grayscale(0.2) brightness(0.8);
   background-size: cover;
 }
+.hideShelf
+{
+  transform: translateX(1000px);
+}
 .shelfEnd
 {
   height: 100vh;

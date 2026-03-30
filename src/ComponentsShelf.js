@@ -3,10 +3,13 @@ import './Components.css';
 import './ComponentsShelf.css';
 import { useState, useRef, useEffect } from "react";
 
-function ComponentsShelf() {
+function ComponentsShelf(props) {
   
+  const selectedShelfStash = props.selectedShelfStash; //wybor komponentu
+  
+
   return (
-    <div className="ComponentsShelf">
+    <div className={props.hide ? "hideShelf ComponentsShelf" : "ComponentsShelf"}>
       <div className="shelfEnd"></div>
       <div className="componentsList">
 

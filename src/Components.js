@@ -8,7 +8,7 @@ import NicornMB from './componentsCode/motherboard/NicornMB.js'
 
 import { useState, useRef, useEffect } from "react";
 
-function Components() {
+function Components(props) {
   const [screwsUnscrewed, setScrewsUnscewed] = useState(0);
   const [secretCounter, setSecretCounter] = useState(0);
 
@@ -21,6 +21,19 @@ function Components() {
   {
     setSecretCounter(secretCounter + 1);
   }
+
+  const selectedMotherboard = props.motherboard.find(item => item.id == props.selectedMotherboardID)
+
+  const [hideShelf, setHideShelf] = useState(true);
+  const [selectedShelfStash, setSelectedShelfStash] = useState();
+
+  function showShelf(component)
+  {
+    console.log("a");
+    setHideShelf(prev => !prev);
+    setSelectedShelfStash(component);
+  }
+
   return (
     <div className="Components">
       <div className="case">
@@ -29,8 +42,14 @@ function Components() {
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
-        <div className="motherboardInput">
-          <NicornMB></NicornMB>
+        
+        <div className="motherboardInput" onClick={() => showShelf("motherboard")}>
+
+          {selectedMotherboard.brand == "AsBoulder" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+          {selectedMotherboard.brand == "好主板" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+          {selectedMotherboard.brand == "MegaByte" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+          {selectedMotherboard.brand == "Nicorn" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+          {selectedMotherboard.brand == "NSI" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
           <div className="visual">
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
@@ -60,10 +79,26 @@ function Components() {
 
       {//półka na komponenty, zawartosc zalezna od wyslanej tablicy
       }
-      <ComponentsShelf></ComponentsShelf>
+      <ComponentsShelf 
+        hide={hideShelf} 
 
-      {//easter egg:
-      }
+
+
+        stashedCoolings={props.stashedCoolings} 
+        stashedPowerSupplies={props.stashedPowerSupplies} 
+        stashedGPUs={props.stashedGPUs}
+        stashedMotherboards={props.stashedMotherboards}
+
+        selectedShelfStash={selectedShelfStash}
+
+        //stale wartosci
+        cooling={props.cooling}
+        powerSupply={props.powerSupply}
+        GPU={props.GPU}
+        motherboard={props.motherboard}
+        />
+
+      {/*easter egg:*/}
       <div className='counterOutline' style={{
     transform: secretCounter > 1 ? "translateY(0px)" : "translateY(-200px)"
   }}>

@@ -3,11 +3,11 @@ import './../../Components.css';
 import './Motherboard.css';
 import { useState } from 'react';
 
-function NicornMB({slots}) {
+function NicornMB({props, selectedMotherboard}) {
 
   return (
     <div className="NicornMB">
-      {Array.from({length: 6}).map((_, index) => 
+      {Array.from({length: selectedMotherboard.slots}).map((_, index) => 
         <div className="NicornMBSlot">
           <div className="visual">
             <div className="effectApplier"></div>
