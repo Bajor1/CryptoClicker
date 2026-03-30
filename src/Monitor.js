@@ -2,6 +2,8 @@ import './App.css'
 import './Monitor.css'
 import bg from './misc/bkg_stol.png';
 import "./window.css";
+import MinerApp from "./Miner";
+import MarketWatch from "./Market";
 import React, { useState, useRef } from 'react';
 import { X } from "lucide-react";
 
@@ -166,6 +168,7 @@ function Window({ title, onClose, children, onFocus, zIndex }) {
 function Monitor() {
   const [openWindows, setOpenWindows] = useState([]);
   const [zCounter, setZCounter] = useState(10);
+  const [coins, setCoins] = useState(0);
 
   const openApp = (appName) => {
     
@@ -192,6 +195,8 @@ function Monitor() {
         w.id === id ? { ...w, z: zCounter + 1 } : w
       )
     );
+
+    
   };
 
   return (
@@ -243,7 +248,21 @@ function Monitor() {
               onFocus={() => bringToFront(win.id)}
               onClose={() => closeWindow(win.id)}
             >
-              <p>Content of {win.name}</p>
+              {win.name === "Miner.exe" && (
+                <MinerApp coins={coins} setCoins={setCoins} onCrash={() => closeWindow(win.id)} />
+              )}
+              {win.name === "Internet" && <p>Internet Explorer 1999</p>}
+              {win.name === "MarketWatch.exe" && (
+              <MarketWatch 
+                coins={coins} 
+                onSell={() => { 
+                  setCoins(0); 
+                  alert("Coins sold!"); 
+                }} 
+              />
+            )}
+              {win.name === "My Computer" && <p>My Computer</p>}
+              {win.name === "Avergainer.exe" && <p>Avergainer</p>}
             </Window>
           ))}
 
