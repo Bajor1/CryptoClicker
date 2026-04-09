@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import "./miner.css";
 
 
-function MinerApp({ onCrash }) {
-  const [coins, setCoins] = useState(0);
+function MinerApp({ coins, setCoins, onCrash }) {
+  
   const [showAd, setShowAd] = useState(false);
 
   const mine = () => {
@@ -38,7 +38,7 @@ function MinerApp({ onCrash }) {
             <p>Coins mined:</p>
             <h1>⛃{coins}⛃</h1>
 
-            <button onClick={() => setCoins(coins + 1)} className="mine-btn">
+            <button onClick={mine} className="mine-btn">
              MINE
             </button>
         </div>

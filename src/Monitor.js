@@ -255,9 +255,10 @@ function Monitor() {
               {win.name === "MarketWatch.exe" && (
               <MarketWatch 
                 coins={coins} 
-                onSell={() => { 
-                  setCoins(0); 
-                  alert("Coins sold!"); 
+                onSell={(price) => { 
+                  const value = coins * price;
+                  alert(`Sold for $${value.toFixed(2)}`);
+                  setCoins(0);
                 }} 
               />
             )}
