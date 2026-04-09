@@ -436,30 +436,25 @@ function App() {
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
     const [stashedGPUs, setStashedGPUs] = useState([2, 1, 1]);
-    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([]);
-    const [stashedCoolings, setStashedCoolings] = useState([]);
-    const [stashedMotherboards, setStashedMotherboards] = useState([]);
+    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0, 3, 5, 6, 11]);
+    const [stashedCoolings, setStashedCoolings] = useState([0]);
+    const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
 
 
 
-    function changeComponent(type, insertedComponentID, stashedComponentID)
+    function changeComponent(type, insertedComponentID, stashedComponentID, slot)
     {
       switch(type)
       {
         case "motherboard":
         {
+          setStashedMotherboards(prev => 
+            prev.filter(id => id !== insertedComponentID)
+          );
+          setStashedMotherboards(prev => 
+            [...prev, selectedMotherboardID]
+          );
           setSelectedMotherboardID(insertedComponentID);
-          setSelectedGPUsID(prev => {
-            const newArray = [...prev];
-            newArray[insertedComponentID] -= 1;
-            return newArray;
-          });
-
-          setSelectedGPUsID(prev => {
-            const newArray = [...prev];
-            newArray[stashedComponentID] += 1;
-            return newArray;
-          });
           break;
         }
         case "GPU":
