@@ -59,6 +59,11 @@ body
   background-size: contain;
   background-position: center;
   font-family: 'Rock Salt', cursive;
+  line-height: 8px;
+}
+h3
+{
+  line-height: 15px;
 }
 .stickyNoteInside
 {

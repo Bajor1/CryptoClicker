@@ -1,9 +1,17 @@
+.Slot:hover > .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+
+.motherboardInput:hover.Slot:hover > .motherboardInput.visual {
+  transform: rotate3D(1, 0, 0, 90deg) rotate(90deg) scale(2) !important;
+}
 .NicornMB
 {
   background-image: url("./../../components/motherboard/nicorn/nicornTemplate.png");
   width: 435px;
   height: 440px;
-  padding-top: 1px; /* 🔥 blokuje margin collapsing */
+  padding-top: 1px;
 }
 .NicornMBSlot
 {
@@ -13,18 +21,100 @@
   margin-left: 70px;
   margin-top:20px;
 }
-
 .NicornMBSlot:nth-child(1)
 {
   margin-left: 70px;
   margin-top:230px;
 }
-
-.NicornMBSlot:hover > .visual
+.AsBoulderMB 
 {
-  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+  background-image: url("./../../components/motherboard/asBoulder/asBoulder3Ports.png");
+  background-size: cover;
+  width: 435px;
+  height: 440px;
+  padding-top: 1px;
+}
+.AsBoulderMBSlot
+{
+  width: 135px;
+  height: 17px;
+  margin-left: 70px;
+  margin-top:41px;
+}
+.AsBoulderMBSlot:nth-child(1)
+{
+  margin-left: 70px;
+  margin-top:255px;
+}
+.好主板MB
+{
+  background-image: url("./../../components/motherboard/CCP/CCP5ports.png");
+  background-size: cover;
+  width: 435px;
+  height: 440px;
+  padding-top: 1px;
+}
+.好主板MBSlot
+{
+  width: 175px;
+  height: 17px;
+  margin-left: 175px;
+  margin-top:20px;
+}
+.好主板MBSlot:nth-child(1)
+{
+  margin-top:40px;
+  margin-left: 190px;
+}
+.好主板MBSlot:nth-child(2)
+{
+  margin-top:44px;
+  margin-left: 190px;
+}
+.好主板MBSlot:nth-child(3)
+{
+  margin-top:178px; 
 }
 
-.motherboardInput:hover.NicornMBSlot:hover > .motherboardInput.visual {
-  transform: rotate3D(1, 0, 0, 90deg) rotate(90deg) scale(2) !important;
+.NSIMB 
+{
+  background-image: url("./../../components/motherboard/NSI/NSItemplate.png");
+  background-size: cover;
+  width: 435px;
+  height: 440px;
+  padding-top: 1px;
+}
+.NSIMBSlot
+{
+  background-image: url("./../../components/motherboard/NSI/NSIInputGPU.png");
+  width: 135px;
+  height: 17px;
+  margin-left: 65px;
+  margin-top:15px;
+}
+.NSIMBSlot:nth-child(1)
+{
+  margin-top:285px;
+}
+
+.MegaByteMB 
+{
+  background-image: url("./../../components/motherboard/megaByte/megaByteTemplate.png");
+  background-size: cover;
+  width: 435px;
+  height: 440px;
+  padding-top: 1px;
+}
+.MegaByteMBSlot
+{
+  background-image: url("./../../components/motherboard/megaByte/megaByteInputGPU.png");
+  background-size: cover;
+  width: 135px;
+  height: 25px;
+  margin-left: 75px;
+  margin-top:15px;
+}
+.MegaByteMBSlot:nth-child(1)
+{
+  margin-top:225px;
 }

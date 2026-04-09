@@ -5,6 +5,7 @@ import FallingElement from './FallingElement.js'
 import ComponentsShelf from './ComponentsShelf.js'
 
 import NicornMB from './componentsCode/motherboard/NicornMB.js'
+import Motherboard from './componentsCode/motherboard/Motherboard.js'
 
 import { useState, useRef, useEffect } from "react";
 
@@ -29,11 +30,9 @@ function Components(props) {
 
   function showShelf(component)
   {
-    console.log("a");
     setHideShelf(prev => !prev);
     setSelectedShelfStash(component);
   }
-
   return (
     <div className="Components">
       <div className="case">
@@ -44,12 +43,30 @@ function Components(props) {
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         
         <div className="motherboardInput" onClick={() => showShelf("motherboard")}>
+        <Motherboard 
+        selectedMotherboardID={props.selectedMotherboardID}
+        stashedCoolings={props.stashedCoolings} 
+        stashedPowerSupplies={props.stashedPowerSupplies} 
+        stashedGPUs={props.stashedGPUs}
+        stashedMotherboards={props.stashedMotherboards}
 
-          {selectedMotherboard.brand == "AsBoulder" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+        selectedShelfStash={selectedShelfStash}
+
+        //stale wartosci
+        cooling={props.cooling}
+        powerSupply={props.powerSupply}
+        GPU={props.GPU}
+        motherboard={props.motherboard}
+
+        //funkcje
+        calculateIncome={props.calculateIncome}
+        changeComponent={props.changeComponent}
+        ></Motherboard>
+          {/*selectedMotherboard.brand == "AsBoulder" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
           {selectedMotherboard.brand == "好主板" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
           {selectedMotherboard.brand == "MegaByte" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
           {selectedMotherboard.brand == "Nicorn" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
-          {selectedMotherboard.brand == "NSI" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""}
+          {selectedMotherboard.brand == "NSI" ? <NicornMB props={props} selectedMotherboard={selectedMotherboard}></NicornMB> : ""*/}
           <div className="visual">
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
@@ -96,6 +113,10 @@ function Components(props) {
         powerSupply={props.powerSupply}
         GPU={props.GPU}
         motherboard={props.motherboard}
+
+        //funkcje
+        calculateIncome={props.calculateIncome}
+        changeComponent={props.changeComponent}
         />
 
       {/*easter egg:*/}
