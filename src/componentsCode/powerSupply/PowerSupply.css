@@ -1,0 +1,173 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Splash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+EAN13+Text&display=swap');
+/*font-family: "Libre Barcode EAN13 Text", system-ui; - barcody*/
+.PS
+{
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+span
+{
+  opacity:0.6;
+  display: block;
+  color: white;
+}
+.clear
+{
+  clear:both;
+}
+.BurglarPowerPS
+{
+  background-image: url(./../../components/powerSupply/burglarPower/burglarPower.png);
+}
+.BurglarPowerBrand
+{
+ font-size: 12px;
+ transform: translateX(210px) translateY(150px);
+ font-family: "Boldonse", system-ui;
+ letter-spacing: 2px;
+}
+.BurglarPowerName
+{
+  font-size: 6px;
+  width:90px;
+  transform: translateX(210px) translateY(148px);
+  font-family: "Boldonse", system-ui;
+  color:rgb(255, 133, 133);
+}
+.BurglarPowerPower
+{
+  transform: translateX(193px) translateY(121px) scaleX(50%);
+  font-family: impact;
+  font-size:25px;
+  color:rgb(255, 0, 0)
+}
+.BuccaneerPS
+{
+  background-image: url(./../../components/powerSupply/buccaneer/buccaneer.png);
+}
+.BuccaneerBrand
+{
+  text-transform: uppercase;
+  font-size: 20px;
+  transform: translateX(200px) translateY(90px);
+  font-family: "Red Hat Display", sans-serif;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+.BuccaneerName
+{
+  text-transform: uppercase;
+  font-size: 20px;
+  width:90px;
+  transform: translateX(200px) translateY(82px);
+  font-family: "Red Hat Display", sans-serif;
+  color:rgb(0, 132, 255);
+  font-weight: 1000;
+}
+.BuccaneerPower
+{
+  transform: translateX(310px) translateY(56px) scaleX(100%);
+  font-family: impact;
+  font-size:20px;
+  color:rgb(80, 214, 255)
+}
+.HellForgedPS
+{
+  background-image: url(./../../components/powerSupply/hellForged/hellForged.png);
+}
+.HellForgedBrand
+{
+  text-transform: uppercase;
+  font-size: 20px;
+  transform: translateX(150px) translateY(140px);
+  font-family:"Splash", cursive;
+  letter-spacing: 4px;
+  color:rgb(255, 30, 0);
+  font-weight: 800;
+}
+.HellForgedName
+{
+  text-transform: uppercase;
+  font-size: 10px;
+  width:250px;
+  transform: translateX(150px) translateY(142px);
+  font-family: "Splash", cursive;
+  color:rgb(255, 99, 78);
+  font-weight: 1000;
+}
+.HellForgedPower
+{
+  transform: translateX(210px) translateY(86px) scaleX(25%);
+  font-family: impact;
+  font-size:50px;
+  color:rgb(255, 143, 143)
+}
+.LoudiumPCPS
+{
+  background-image: url(./../../components/powerSupply/loudiumPC/loudiumPC.png);
+}
+.LoudiumPCBrand
+{
+  text-transform: uppercase;
+  font-size: 30px;
+  transform: translateX(63px) translateY(150px);
+  font-family: "Red Hat Display", sans-serif;
+  color:black;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+.LoudiumPCName
+{
+  text-transform: uppercase;
+  font-size: 20px;
+  transform: translateX(63px) translateY(95px);
+  font-family: "Red Hat Display", sans-serif;
+  color:rgb(255, 187, 0);
+  stop-opacity: 1;
+  font-weight: 1000;
+}
+.LoudiumPCPower
+{
+  transform: translateX(280px) translateY(75px) scaleX(100%);
+  font-family: impact;
+  font-size:35px;
+  color:rgb(165, 121, 0)
+}
+.MegaBytePS
+{
+  background-image: url(./../../components/powerSupply/megaByte/MegaByte.png);
+}
+.MegaByteBrand
+{
+  text-transform: uppercase;
+  font-size: 30px;
+  transform: translateX(33px) translateY(160px);
+  font-family: "Red Hat Display", sans-serif;
+  color:rgb(0, 114, 221);
+  opacity: 0.8;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+.MegaByteName
+{
+  text-transform: uppercase;
+  font-size: 20px;
+  transform: translateX(33px) translateY(105px);
+  font-family: "Red Hat Display", sans-serif;
+  color:rgb(255, 255, 255);
+  stop-opacity: 1;
+  font-weight: 1000;
+}
+.MegaBytePower
+{
+  transform: translateX(240px) translateY(95px) scaleX(100%);
+  font-family: impact;
+  font-size:35px;
+  color:rgb(123, 229, 255)
+}
