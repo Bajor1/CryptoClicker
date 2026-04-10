@@ -304,7 +304,7 @@ function App() {
   const powerSupply = [
     {
       id:0,
-      brand:"BurglerPower",
+      brand:"BurglarPower",
       name:"V1 Super Platinum DELUXE gaming X3000",
       powerOutput:"300W",
       generatedHeat: 70,
@@ -313,7 +313,7 @@ function App() {
     },
     {
       id:1,
-      brand:"BurglerPower",
+      brand:"BurglarPower",
       name:"V2 Ultra energy W800 PERFORMENCE",
       powerOutput:"450W",
       generatedHeat: 80,
@@ -322,7 +322,7 @@ function App() {
     },
     {
       id:2,
-      brand:"BurglerPower",
+      brand:"BurglarPower",
       name:"V3 Turbo Max ECO Power Boost",
       powerOutput:"500W",
       generatedHeat: 90,
@@ -428,15 +428,15 @@ function App() {
     const [money, setMoney] = useState(0);
     const [BitCoinIncome, setBitCoinIncome] = useState(0);
 
-    const [selectedMotherboardID, setSelectedMotherboardID] = useState(0);
-    const [selectedPowerSupplyID, setSelectedPowerSupplyID] = useState(0);
+    const [selectedMotherboardID, setSelectedMotherboardID] = useState(-1);
+    const [selectedPowerSupplyID, setSelectedPowerSupplyID] = useState(-1);
     const [selectedCoolingID, setSelectedCoolingID] = useState(0);
     const [selectedGPUsID, setSelectedGPUsID] = useState([0]);
     const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
     const [stashedGPUs, setStashedGPUs] = useState([2, 1, 1]);
-    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0, 3, 5, 6, 11]);
+    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
     const [stashedCoolings, setStashedCoolings] = useState([0]);
     const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
 
@@ -448,6 +448,11 @@ function App() {
       {
         case "motherboard":
         {
+          if (selectedMotherboardID == -1)
+          {
+            setSelectedMotherboardID(insertedComponentID);
+            break;
+          }
           setStashedMotherboards(prev => 
             prev.filter(id => id !== insertedComponentID)
           );
@@ -464,7 +469,18 @@ function App() {
         }
         case "powerSupply":
         {
-
+          if (selectedPowerSupplyID == -1)
+          {
+            setSelectedPowerSupplyID(insertedComponentID);
+            break;
+          }
+          setStashedPowerSupplies(prev => 
+            prev.filter(id => id !== insertedComponentID)
+          );
+          setStashedPowerSupplies(prev => 
+            [...prev, selectedPowerSupplyID]
+          );
+          setSelectedPowerSupplyID(insertedComponentID);
           break;
         }
         case "cooling":
