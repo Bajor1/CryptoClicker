@@ -1,4 +1,4 @@
-/* Kontener tła */
+
 .bkg {
   position: relative;
   width: 100%;
@@ -17,7 +17,7 @@
   width: 100%;
   max-width: 900px;
   margin: auto;
-  z-index: 1; /* aby ekran był nad tłem */
+  z-index: 1; 
 }
 
 .screen {
@@ -29,9 +29,8 @@
   overflow: hidden;
   
   font-size: 12px;
-  z-index: 2; /* nad monitor-img */
+  z-index: 2; 
 
-  /* Szum generowany CSS */
 }
 
 .screen::after {
@@ -66,7 +65,6 @@
   100% { transform: translate(0,0); }
 }
 
-/* Scanlines */
 .scanlines {
   position: absolute;
   inset: 0;
@@ -79,14 +77,14 @@
     transparent 3px
   );
   opacity: 0.2;
-  z-index: 3; /* nad ikonami */
+  z-index: 3; 
 }
 
 .monitor-img {
   width: 100%;
   height: auto;
   display: block;
-  z-index: 0; /* poniżej ekranu i ikon */
+  z-index: 0; 
 }
 
 .icon {
@@ -95,7 +93,7 @@
   display: block;
   margin: auto;
   width: 6em;
-  z-index: 4; /* nad screen i scanlines */
+  z-index: 4; 
 }
 
 .icon button {
@@ -105,7 +103,7 @@
 }
 
 .icon img {
-  width: 3.5em;   /* ikona też się skaluje */
+  width: 3.5em;  
   max-width: 60px;
   max-height: 60px;
 }
@@ -114,7 +112,7 @@
   margin: 2px 0 0;
   color: white;
   font-size: 0.9em;
-  line-height: 1.1; /* tekst się skaluje */
+  line-height: 1.1; 
 }
 
 .window {
@@ -162,7 +160,7 @@
   overflow: auto;
 }
 
-/* 🔥 RESIZE jak w Windows */
+
 .resize-handle {
   position: absolute;
   width: 12px;
@@ -178,7 +176,7 @@
   border-radius: 4px;
 }
 
-/* pozycje ikon */
+
 .icon1 { top: 5%; left: 7%; }
 .icon2 { top: 25%; left: 7%; }
 .icon3 { top: 5%; left: 23%; }
