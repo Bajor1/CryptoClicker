@@ -26,3 +26,76 @@
 .sell-btn:active {
   border: 3px inset black;
 }
+
+.crt-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.crt-window {
+  width: 300px;
+  background: #111;
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 20px #00ff88;
+  font-family: "Courier New", monospace;
+  color: #00ff88;
+}
+
+.crt-header {
+  background: #003322;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #00ff88;
+}
+
+.crt-header button {
+  background: black;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  cursor: pointer;
+}
+
+.crt-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.crt-line {
+  margin: 3px 0;
+}
+
+.success {
+  color: #00ff00;
+}
+
+.crt-amount {
+  font-size: 26px;
+  text-align: center;
+  margin: 15px 0;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.crt-footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.crt-footer button {
+  background: black;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.crt-footer button:hover {
+  background: #003322;
+}

@@ -4,6 +4,7 @@ import bg from './misc/bkg_stol.png';
 import "./window.css";
 import MinerApp from "./Miner";
 import MarketWatch from "./Market";
+import MyComputer from './MyComputer';
 import React, { useState, useRef } from 'react';
 import { X } from "lucide-react";
 
@@ -251,18 +252,16 @@ function Monitor() {
               {win.name === "Miner.exe" && (
                 <MinerApp coins={coins} setCoins={setCoins} onCrash={() => closeWindow(win.id)} />
               )}
-              {win.name === "Internet" && <p>Internet Explorer 1999</p>}
+              {win.name === "Internet" && <p><b>ERROR: No internet connection :(</b></p>}
               {win.name === "MarketWatch.exe" && (
               <MarketWatch 
                 coins={coins} 
-                onSell={(price) => { 
-                  const value = coins * price;
-                  alert(`Sold for $${value.toFixed(2)}`);
+                  onSell={(price) => { 
                   setCoins(0);
                 }} 
               />
             )}
-              {win.name === "My Computer" && <p>My Computer</p>}
+              {win.name === "My Computer" &&<MyComputer />}
               {win.name === "Avergainer.exe" && <p>Avergainer</p>}
             </Window>
           ))}

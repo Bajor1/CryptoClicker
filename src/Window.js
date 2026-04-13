@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { X } from "lucide-react";
 import "./window.css";
 
-// 🔹 OSOBNY KOMPONENT OKNA
 function Window({ title, onClose, children }) {
   return (
     <div className="window">
@@ -37,7 +36,7 @@ function Monitor() {
         <img src="/monior.png" className="monitor-img" alt="monitor" />
 
         <div className="screen">
-          {/* IKONY */}
+       
           <div className="icon icon1">
             <button onClick={() => openApp("Miner.exe")}>
               <img src="/folderXP_icon.png" alt="miner" />
@@ -73,7 +72,7 @@ function Monitor() {
             </button>
           </div>
 
-          {/* OKNA */}
+       
           {openWindows.map((win) => (
             <Window
               key={win.id}
