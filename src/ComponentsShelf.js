@@ -53,7 +53,27 @@ function ComponentsShelf(props) {
                 </div>
               </div>
             </div>
-          )) : " "}
+          )) : selectedShelfStash == "GPU" ? props.GPU
+          .filter(x => props.stashedGPUs.includes(x.id))
+            .map(item => (
+            <div className="componentItem" onClick={() => props.changeComponent("GPU", item.id, props.selectedGPUID, props.selectedShelfIndex)}>
+              <div className="stickyNote">
+                <div className="stickyNoteInside">
+                  <h3>{item.name}</h3>
+                  <h4>{item.brand}</h4>
+                  <h5 className="GPUText">Required Power: {item.powerCost} W</h5>
+                  <h5 className="GPUText">Optimal Temperature: {item.optimalHeat} °C</h5>
+                  <h5 className="GPUText">Generated Temperature: {item.generatedHeat} °C</h5>
+                  <h5 className="GPUText">Computing Power: {item.computingPower}</h5>
+                </div>
+                <div className="visual">
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                </div>
+              </div>
+            </div>)) : ""}
       </div>
     </div>
   );
