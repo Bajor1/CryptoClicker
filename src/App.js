@@ -435,7 +435,7 @@ function App() {
     const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
-    const [stashedGPUs, setStashedGPUs] = useState([2, 1, 1]);
+    const [stashedGPUs, setStashedGPUs] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]);
     const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
     const [stashedCoolings, setStashedCoolings] = useState([0]);
     const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
@@ -464,7 +464,10 @@ function App() {
         }
         case "GPU":
         {
-
+          setStashedGPUs(prev =>
+            prev.filter(id => id !=insertedComponentID)
+          );
+          //dodaj id wybranego GPu do konkretnego miejsca w tablicy wybranych GPU
           break;
         }
         case "powerSupply":

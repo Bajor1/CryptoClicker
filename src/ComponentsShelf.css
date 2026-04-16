@@ -101,3 +101,10 @@ h3
 {
   backdrop-filter: contrast(1.3) invert() hue-rotate(90deg);
 }
+.GPUText
+{
+  line-height: 3px;
+  letter-spacing: 0px;
+  font-size: 7px;
+  text-wrap: nowrap;
+}

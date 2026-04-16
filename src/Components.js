@@ -29,11 +29,13 @@ function Components(props) {
 
   const [hideShelf, setHideShelf] = useState(true);
   const [selectedShelfStash, setSelectedShelfStash] = useState();
+  const [selectedShelfIndex, setSelectedShelfIndex] = useState(); //uzywane do zapisu wybranego slota GPU
 
   function showShelf(component, slot)
   {
     setHideShelf(prev => !prev);
     setSelectedShelfStash(component);
+    setSelectedShelfIndex(slot);
   }
   return (
     <div className="Components">
@@ -143,6 +145,7 @@ function Components(props) {
         stashedMotherboards={props.stashedMotherboards}
 
         selectedShelfStash={selectedShelfStash}
+        selectedShelfIndex={selectedShelfIndex}
 
         //stale wartosci
         cooling={props.cooling}
