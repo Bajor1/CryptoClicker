@@ -437,7 +437,7 @@ function App() {
 
     const [stashedGPUs, setStashedGPUs] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]);
     const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
-    const [stashedCoolings, setStashedCoolings] = useState([0]);
+    const [stashedCoolings, setStashedCoolings] = useState([0,0,0,0,0,0,0,0,0,0]);
     const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
 
 
@@ -467,6 +467,14 @@ function App() {
           setStashedGPUs(prev =>
             prev.filter(id => id !=insertedComponentID)
           );
+          setSelectedGPUsID(
+            prev => {
+              const updated = prev.map((x, index) => index == slot ? insertedComponentID : prev[index]);
+              console.log(slot)
+              console.log(updated);
+              return updated;
+        });
+
           //dodaj id wybranego GPu do konkretnego miejsca w tablicy wybranych GPU
           break;
         }
