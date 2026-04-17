@@ -10,7 +10,8 @@ import PowerSupply from './componentsCode/powerSupply/PowerSupply.js'
 
 import { useState, useRef, useEffect } from "react";
 
-function Components(props) {
+function Components(props) 
+{
   const [isSlotHovered, setIsSlotHovered] = useState(false); //fix do problemu z hoverem parenta podczs hovera na dziecko
   const [screwsUnscrewed, setScrewsUnscewed] = useState(0);
   const [secretCounter, setSecretCounter] = useState(0);
@@ -52,7 +53,7 @@ function Components(props) {
         setIsSlotHovered={setIsSlotHovered} //fix do problemu z hoverem parenta podczas hovera na dziecko
 
         selectedMotherboardID={props.selectedMotherboardID} //obecnie wsadzony komponent
-
+        selectedGPUsID={props.selectedGPUsID}
         stashedCoolings={props.stashedCoolings} 
         stashedPowerSupplies={props.stashedPowerSupplies} 
         stashedGPUs={props.stashedGPUs}

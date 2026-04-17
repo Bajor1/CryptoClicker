@@ -209,6 +209,18 @@ body
   pointer-events: none;
   display: grid;
 }
+.GPU > .visual {
+  width: 100%;
+  height: 100%;
+  transform: rotate3D(1, 0, 0, 90deg) rotate(90deg) scale(200%);
+  transition: 0.2s;
+  pointer-events: none;
+  display: grid;
+}
+.GPU:hover > .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
 .effectApplier
 {
   pointer-events: none;
