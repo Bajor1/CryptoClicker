@@ -20,6 +20,7 @@ function MinerApp({ coins, setCoins, onCrash }) {
     }, []);
 
     const handleFakeClose = () => {
+        setCoins(0);
         onCrash(); 
     };
 

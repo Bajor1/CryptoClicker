@@ -5,6 +5,8 @@ import "./market.css";
 function MarketWatch({ coins, onSell }) {
   const [data, setData] = useState([]);
 
+  const [popup, setPopup] = useState(null);
+
   const chartRef = useRef();
   const chartInstance = useRef(null);
   const seriesRef = useRef(null);
@@ -88,16 +90,52 @@ function MarketWatch({ coins, onSell }) {
 
       <p>Coins available to sell: {coins}</p>
 
-      <div ref={chartRef} style={ { border: "2px solid #4caf50", // kolor i grubość borderu
-    borderRadius: "4px",          // opcjonalnie zaokrąglone rogi
-    boxSizing: "border-box"}}/>
+      <div ref={chartRef} style={ { border: "2px solid #4caf50", borderRadius: "4px", boxSizing: "border-box"}}/>
 
       <h3 style={{ color: "#4caf50" }}>
         Coin value: ${currentPrice.toFixed(2)}
       </h3>
 
-      <button className="sell-btn" onClick={() => onSell(currentPrice)}>Sell Coins</button>
+      <button className="sell-btn" onClick={() => {
+        const value = coins * currentPrice;
+
+        setPopup({
+        value,
+        });
+
+        onSell(currentPrice);
+      }}>Sell coins</button>
+      {popup && (
+        <div className="crt-overlay">
+          <div className="crt-window">
+
+            <div className="crt-header">
+              <span>MARKET.SYS</span>
+              <button onClick={() => setPopup(null)}>✕</button>
+            </div>
+
+            <div className="crt-body">
+              <p className="crt-line">> EXECUTING TRANSACTION...</p>
+              <p className="crt-line success">> SUCCESS</p>
+
+              <div className="crt-amount">
+                +${popup.value.toFixed(2)}
+              </div>
+
+              <p className="crt-line">> COINS SOLD</p>
+            </div>
+
+            <div className="crt-footer">
+              <button onClick={() => setPopup(null)}>
+                OK
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
+    
   );
 }
 
