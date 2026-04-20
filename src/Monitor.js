@@ -5,7 +5,7 @@ import "./window.css";
 import MinerApp from "./Miner";
 import MarketWatch from "./Market";
 import MyComputer from './MyComputer';
-import React, { useState, useRef } from 'react';
+import React, { useEffect,useState, useRef } from 'react';
 import { X } from "lucide-react";
 
 function Window({ title, onClose, children, onFocus, zIndex }) {
@@ -169,7 +169,66 @@ function Window({ title, onClose, children, onFocus, zIndex }) {
 function Monitor() {
   const [openWindows, setOpenWindows] = useState([]);
   const [zCounter, setZCounter] = useState(10);
-  const [coins, setCoins] = useState(0);
+  const [coins, setCoins] = useState(() => {
+  const saved = localStorage.getItem("coins");
+  return saved ? JSON.parse(saved) : 0;
+});
+
+const [marketData, setMarketData] = useState(() => {
+  const saved = localStorage.getItem("marketData");
+  return saved ? JSON.parse(saved) : [];
+});
+
+useEffect(() => {
+  localStorage.setItem("coins", JSON.stringify(coins));
+}, [coins]);
+
+useEffect(() => {
+  localStorage.setItem("marketData", JSON.stringify(marketData));
+}, [marketData]);
+
+useEffect(() => {
+  localStorage.setItem("marketTime", JSON.stringify(marketTimeRef.current));
+});
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setMarketData(prev => {
+      const lastClose = prev[prev.length - 1]?.close || 5;
+
+    
+      let change = (Math.random() - 0.5) * 0.5;
+
+    
+      if (Math.random() < 0.1) change *= 3;
+
+      let close = lastClose + change;
+      close = Math.max(2, Math.min(10, close));
+
+      const open = lastClose;
+      const high = Math.max(open, close) + Math.random() * 0.3;
+      const low = Math.min(open, close) - Math.random() * 0.3;
+
+      const next = {
+        time: marketTimeRef.current,
+        open,
+        high,
+        low,
+        close
+      };
+
+      marketTimeRef.current += 1;
+
+      return [...prev, next].slice(-200);
+    });
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, []);
+
+const marketTimeRef = useRef(
+  JSON.parse(localStorage.getItem("marketTime")) || 1
+);
 
   const openApp = (appName) => {
     
@@ -256,13 +315,14 @@ function Monitor() {
               {win.name === "MarketWatch.exe" && (
               <MarketWatch 
                 coins={coins} 
+                data={marketData}
                   onSell={(price) => { 
                   setCoins(0);
                 }} 
               />
             )}
               {win.name === "My Computer" &&<MyComputer />}
-              {win.name === "Avergainer.exe" && <p>Avergainer</p>}
+              {win.name === "Avergainer.exe" && <b><p>Nic tu nie ma xd</p></b>}
             </Window>
           ))}
 

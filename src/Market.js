@@ -2,66 +2,44 @@ import { useEffect, useState, useRef } from "react";
 import { createChart, CandlestickSeries } from "lightweight-charts";
 import "./market.css";
 
-function MarketWatch({ coins, onSell }) {
-  const [data, setData] = useState([]);
-
-  const [popup, setPopup] = useState(null);
-
+function MarketWatch({ coins, onSell, data }) {
   const chartRef = useRef();
   const chartInstance = useRef(null);
   const seriesRef = useRef(null);
-  const timeRef = useRef(1);
+
+  const [popup, setPopup] = useState(null);
 
   const currentPrice = data[data.length - 1]?.close || 0;
 
-  useEffect(() => {
-  const interval = setInterval(() => {
-    setData(prev => {
-      const lastClose = prev[prev.length - 1]?.close || 5;
-
-      const open = lastClose;
-      let close = open + (Math.random() - 0.5) * 0.8;
-      close = Math.max(2, Math.min(10, close));
-      const high = Math.max(open, close) + Math.random() * 0.5;
-      const low = Math.min(open, close) - Math.random() * 0.5;
-
-      const next = {
-        time: timeRef.current,
-        open,
-        high,
-        low,
-        close
-      };
-
-      timeRef.current += 1;
-
-      return [...prev.slice(-99), next];
-    });
-  }, 3000);
-
-  return () => clearInterval(interval);
-}, []);
 
   useEffect(() => {
     const chart = createChart(chartRef.current, {
       width: 400,
-      height: 150,
+      height: 180,
       layout: {
-        background: { color: "#1e1e1e" },
-        textColor: "#DDD",
+        background: { color: "#0f172a" },
+        textColor: "#cbd5e1",
       },
       grid: {
-        vertLines: { color: "#333" },
-        horzLines: { color: "#333" },
+        vertLines: { color: "#1e293b" },
+        horzLines: { color: "#1e293b" },
+      },
+      rightPriceScale: {
+        borderColor: "#334155",
+      },
+      timeScale: {
+        borderColor: "#334155",
+        rightOffset: 5,
+        barSpacing: 12,
       },
     });
 
     const candleSeries = chart.addSeries(CandlestickSeries, {
-      upColor: "#4caf50",
-      downColor: "#f44336",
+      upColor: "#22c55e",
+      downColor: "#ef4444",
       borderVisible: false,
-      wickUpColor: "#4caf50",
-      wickDownColor: "#f44336",
+      wickUpColor: "#22c55e",
+      wickDownColor: "#ef4444",
     });
 
     chartInstance.current = chart;
@@ -70,19 +48,23 @@ function MarketWatch({ coins, onSell }) {
     return () => chart.remove();
   }, []);
 
+  
   useEffect(() => {
-    if (seriesRef.current) {
-      seriesRef.current.setData(
-        data.map(d => ({
-          time: d.time,
-          open: d.open,
-          high: d.high,
-          low: d.low,
-          close: d.close,
-        }))
-      );
+    if (seriesRef.current && data.length > 0) {
+      seriesRef.current.setData(data);
     }
   }, [data]);
+
+  const handleSell = () => {
+    const value = coins * currentPrice;
+
+    setPopup({
+      value,
+    });
+
+    onSell(currentPrice);
+  }
+  
 
   return (
     <div className="market-app">

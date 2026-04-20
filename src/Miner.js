@@ -45,7 +45,7 @@ function MinerApp({ coins, setCoins, onCrash }) {
         </div>
 
       <div className="banner">
-         YOU ARE VISITOR #1337420 
+         YOU ARE VISITOR #18-21/4|25@21_11^18
       </div>
         {showAd && (
             <div className="virus-ad">
