@@ -24,7 +24,7 @@ function App() {
     {
       id: 1,
       brand: "Compressio",
-      name: "GePower GTY 1050",
+      name: "GePower GTX 1050",
       powerCost: 60,
       computingPower: 15,
       generatedHeat: 40,
@@ -34,7 +34,7 @@ function App() {
     {
       id: 2,
       brand: "Compressio",
-      name: "GePower GTY 1650",
+      name: "GePower GTX 1650",
       powerCost: 90,
       computingPower: 20,
       generatedHeat: 80,
@@ -44,7 +44,7 @@ function App() {
     {
       id: 3,
       brand: "MegaByte",
-      name: "GePower GTY 1650",
+      name: "GePower GTX 1650",
       powerCost: 90,
       computingPower: 23,
       generatedHeat: 90,
@@ -54,7 +54,7 @@ function App() {
     {
       id: 4,
       brand: "Acwer",
-      name: "GePower GTY 1660",
+      name: "GePower GTX 1660",
       powerCost: 110,
       computingPower: 25,
       generatedHeat: 100,
@@ -64,7 +64,7 @@ function App() {
     {
       id: 5,
       brand: "Compressio",
-      name: "GePower GTY 1660",
+      name: "GePower GTX 1660",
       powerCost: 150,
       computingPower: 30,
       generatedHeat: 110,
@@ -74,7 +74,7 @@ function App() {
     {
       id: 6,
       brand: "AXD",
-      name: "GePower GTY 1660",
+      name: "Radeoff 550",
       powerCost: 100,
       computingPower: 25,
       generatedHeat: 100,
@@ -84,7 +84,7 @@ function App() {
     {
       id: 7,
       brand: "Compressio",
-      name: "GePower RTY 2050",
+      name: "GePower RTX 2050",
       powerCost: 200,
       computingPower: 40,
       generatedHeat: 150,
@@ -94,7 +94,7 @@ function App() {
     {
       id: 8,
       brand: "HellForged",
-      name: "GeVilPower RTY 2050",
+      name: "GeVilPower RTX 2050",
       powerCost: 210,
       computingPower: 50,
       generatedHeat: 200,
@@ -104,7 +104,7 @@ function App() {
     {
       id: 9,
       brand: "MegaByte",
-      name: "GePower RTY 2080",
+      name: "GePower RTX 2080",
       powerCost: 240,
       computingPower: 50,
       generatedHeat: 140,
@@ -114,7 +114,7 @@ function App() {
     {
       id: 10,
       brand: "Compressio",
-      name: "GePower RTY 2080",
+      name: "GePower RTX 2080",
       powerCost: 270,
       computingPower: 47,
       generatedHeat: 110,
@@ -124,7 +124,7 @@ function App() {
     {
       id: 11,
       brand: "Compressio",
-      name: "GePower RTY 3050",
+      name: "GePower RTX 3050",
       powerCost: 300,
       computingPower: 55,
       generatedHeat: 130,
@@ -134,7 +134,7 @@ function App() {
     {
       id: 12,
       brand: "Acwer",
-      name: "GePower RTY 3050",
+      name: "GePower RTX 3050",
       powerCost: 400,
       computingPower: 60,
       generatedHeat: 120,
@@ -144,7 +144,7 @@ function App() {
     {
       id: 13,
       brand: "Compressio",
-      name: "GePower RTY 3090",
+      name: "GePower RTX 3090",
       powerCost: 500,
       computingPower: 100,
       generatedHeat: 200,
@@ -154,7 +154,7 @@ function App() {
     {
       id: 14,
       brand: "HellForged",
-      name: "GePower RTY 3090",
+      name: "GePower RTX 3090",
       powerCost: 530,
       computingPower: 120,
       generatedHeat: 300,
@@ -164,7 +164,7 @@ function App() {
     {
       id: 15,
       brand: "HellForged",
-      name: "GePower RTY 3090 TURBO",
+      name: "GePower RTX 3090 TURBO",
       powerCost: 430,
       computingPower: 120,
       generatedHeat: 600,
@@ -173,8 +173,8 @@ function App() {
     },
     {
       id: 16,
-      brand: "nicorn",
-      name: "GePower RTY 3090 U",
+      brand: "Nicorn",
+      name: "GePower RTX 3090 U",
       powerCost: 580,
       computingPower: 120,
       generatedHeat: 180,
@@ -184,7 +184,7 @@ function App() {
     {
       id: 17,
       brand: "Compressio",
-      name: "GePower MGX 5000",
+      name: "GePower RTX 5000",
       powerCost: 730,
       computingPower: 200,
       generatedHeat: 280,
@@ -194,7 +194,7 @@ function App() {
     {
       id: 18,
       brand: "HellForged",
-      name: "GeVilPower MGX 5000",
+      name: "GeVilPower RTX 5000",
       powerCost: 700,
       computingPower: 250,
       generatedHeat: 800,
@@ -204,7 +204,7 @@ function App() {
     {
       id: 19,
       brand: "MegaByte",
-      name: "GePower MGX 5000",
+      name: "GePower RTX 5000",
       powerCost: 800,
       computingPower: 190,
       generatedHeat: 200,
@@ -431,7 +431,7 @@ function App() {
     const [selectedMotherboardID, setSelectedMotherboardID] = useState(-1);
     const [selectedPowerSupplyID, setSelectedPowerSupplyID] = useState(-1);
     const [selectedCoolingID, setSelectedCoolingID] = useState(0);
-    const [selectedGPUsID, setSelectedGPUsID] = useState([0]);
+    const [selectedGPUsID, setSelectedGPUsID] = useState([2,5,0,-1,-1,-1,-1,-1,-1,-1]);
     const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
@@ -467,6 +467,14 @@ function App() {
           setStashedGPUs(prev =>
             prev.filter(id => id !=insertedComponentID)
           );
+          setSelectedGPUsID(
+            prev => {
+              const updated = prev.map((x, index) => index == slot ? insertedComponentID : prev[index]);
+              console.log(slot)
+              console.log(updated);
+              return updated;
+        });
+
           //dodaj id wybranego GPu do konkretnego miejsca w tablicy wybranych GPU
           break;
         }

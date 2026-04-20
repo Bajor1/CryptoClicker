@@ -1,0 +1,21 @@
+.GPU
+{
+    width:200px;
+    height: 40px;
+    background-size: 200px 40px;
+    margin-left:-10px;
+    padding:1px;
+}
+.GT1030{ background-image: url("./../../components/GPU/GT1030.png");transform: translate(-50px, -10px);}
+.CompressioGePowerGTX{background-image: url("./../../components/GPU/CompressioGePowerGTX.png");transform: translate(-15px, -10px);}
+.MegaByteGePowerGTX{background-image: url("./../../components/GPU/MegaByteGePowerGTX.png");transform: translate(-5px, -10px);}
+.AcwerGePowerGTX{background-image: url("./../../components/GPU/AcwerGePowerGTX.png");transform: translate(-8px, -10px);}
+.AXDRadeoff{background-image: url("./../../components/GPU/AXDRadeoff.png");transform: translate(-1px, -10px);}
+.CompressioGePowerRTX{background-image: url("./../../components/GPU/CompressioGePowerRTX.png");transform: translate(-10px, -10px);}
+.HellForgedGeVilPowerRTX{background-image: url("./../../components/GPU/HellForgedGeVilPowerRTX.png"); transform: translate(-10px, -10px);}
+.MegaByteGePowerRTX{background-image: url("./../../components/GPU/MegaByteGePowerRTX.png");}
+.AcwerGePowerRTX{background-image: url("./../../components/GPU/AcwerGePowerRTX.png"); transform: translate(-55px, -20px);}
+.HellForgedGeVilPowerRTX{background-image: url("./../../components/GPU/HellForgedGeVilPowerRTX.png");transform: translate(-35px, -5px);}
+.NicornGePowerRTX{background-image: url("./../../components/GPU/NicornGePowerRTX.png");transform: translate(11px, -10px);}
+.unsignedBigBoy{background-image: url("./../../components/GPU/GT1030.png");/*dodaj grafike*/}
+.unsignedSmallBoy{background-image: url("./../../components/GPU/GT1030.png");/*dodaj grafike*/}
