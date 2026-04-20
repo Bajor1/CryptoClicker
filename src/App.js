@@ -421,6 +421,54 @@ function App() {
       cooling: 20,
       powerCost: 5,
       cost: 20
+    },
+    {
+      id:1,
+      brand: "LoudiumPC",
+      name: "CoolPack v2",
+      cooling: 40,
+      powerCost: 10,
+      cost: 50
+    },
+    {
+      id:2,
+      brand: "Buccaneer",
+      name: "Turbo Cool H3000",
+      cooling: 140,
+      powerCost: 60,
+      cost: 500
+    },
+    {
+      id:3,
+      brand: "Buccaneer",
+      name: "Turbo Cool H3500",
+      cooling: 200,
+      powerCost: 65,
+      cost: 700
+    },
+    {
+      id:4,
+      brand: "Buccaneer",
+      name: "Turbo Cool H4000 ECO",
+      cooling: 250,
+      powerCost: 55,
+      cost: 800
+    },
+    {
+      id:5,
+      brand: "LoudiumPC",
+      name: "SuperCool Eco Power Focus Pocus",
+      cooling: 400,
+      powerCost: 105,
+      cost: 1000
+    },
+    {
+      id:6,
+      brand: "LoudiumPC",
+      name: "SuperCool Eco Power Focus Pocus EXTREME EDITION",
+      cooling: 600,
+      powerCost: 155,
+      cost: 1600
     }
   ]
 
@@ -437,9 +485,10 @@ function App() {
 
     const [stashedGPUs, setStashedGPUs] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]);
     const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
-    const [stashedCoolings, setStashedCoolings] = useState([0]);
+    const [stashedCoolings, setStashedCoolings] = useState([0,1,2,3,4,5,6]);
     const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
 
+    const [income, setIncome] = useState(0);
 
 
     function changeComponent(type, insertedComponentID, stashedComponentID, slot)
@@ -464,18 +513,19 @@ function App() {
         }
         case "GPU":
         {
-          setStashedGPUs(prev =>
-            prev.filter(id => id !=insertedComponentID)
-          );
-          setSelectedGPUsID(
-            prev => {
-              const updated = prev.map((x, index) => index == slot ? insertedComponentID : prev[index]);
-              console.log(slot)
-              console.log(updated);
-              return updated;
-        });
-
-          //dodaj id wybranego GPu do konkretnego miejsca w tablicy wybranych GPU
+          setSelectedGPUsID(prev => {
+            const oldGPU = prev[slot];
+            setStashedGPUs(prevStash =>
+              prevStash.filter(id => id !== insertedComponentID)
+            );
+            if (oldGPU !== -1) {
+              setStashedGPUs(prevStash => [...prevStash, oldGPU]);
+            }
+            const updated = prev.map((x, index) =>
+              index === slot ? insertedComponentID : x
+            );
+            return updated;
+          });
           break;
         }
         case "powerSupply":
@@ -496,7 +546,18 @@ function App() {
         }
         case "cooling":
         {
-
+          if (selectedCoolingID == -1)
+          {
+            setSelectedCoolingID(insertedComponentID);
+            break;
+          }
+          setStashedCoolings(prev => 
+            prev.filter(id => id !== insertedComponentID)
+          );
+          setStashedCoolings(prev => 
+            [...prev, selectedCoolingID]
+          );
+          setSelectedCoolingID(insertedComponentID);
           break;
         }
         default:
@@ -505,33 +566,55 @@ function App() {
           break;
         }
       }
+      calculateIncome();
     }
 
     function calculateIncome()
     {
       let currentTickIncome = 0;
+      let totalPowerBalance = powerSupply[selectedPowerSupplyID].powerOutput;
+      let totalTemperatureBalance = cooling[selectedCoolingID].cooling;
       for (let i = 0; i<=motherboard[selectedMotherboardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
       {
-        //liczenie roznicy 
+        if(selectedGPUsID[i] != -1)
+        {
+          totalPowerBalance-=GPU[selectedGPUsID[i]].powerCost; //pobor mocy kart graficznych
+          totalTemperatureBalance-=GPU[selectedGPUsID[i]].generatedHeat; //generowane cieplo kart graficznych
+        }
       }
-
+      totalPowerBalance-=cooling[selectedCoolingID].powerCost; //pobor mocy wiatrakow
+      totalTemperatureBalance-=powerSupply[selectedPowerSupplyID].generatedHeat; //generowane cieplo zasilacza
 
       for (let i = 0; i<=motherboard[selectedMotherboardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
       {
         //liczenie przychodu
         if (selectedGPUsID[i] != -1)
         {
-          //currentTickIncome += GPU[selectedGPUsID[i]].computingPower * (Math.floor((Math.random()* (max-min) + min)*100)/100) /10000000
+          currentTickIncome += GPU[selectedGPUsID[i]].computingPower;
         }
         else
         {
           //brak GPU na slocie
         }
       }
+      if (totalPowerBalance < 0)
+      {
+        //kara za negatywny power balance
+        //let powerDiffPercentage = (-totalPowerBalance / powerSupply[selectedPowerSupplyID].powerOutput) /100;
+        //currentTickIncome = currentTickIncome - (currentTickIncome/100)*30*powerDiffPercentage;
+      }
+      if (totalTemperatureBalance < 0)
+      {
+        //kara za negatywny power balance
+        //let temperatureDiffPercentage = (-totalTemperatureBalance / cooling[selectedCoolingID].cooling) /100;
+        //currentTickIncome = currentTickIncome - (currentTickIncome/100)*30*temperatureDiffPercentage;
+      }
+      setIncome(currentTickIncome);
     }
   return (
     <div className="App">
       <Header setUI = {setCurrentUI}></Header>
+      {income}
       {currentUI == "Monitor" ? <Monitor></Monitor> : 
       currentUI == "Components" ? <Components 
         //wszystkie posiadanie komponenty
