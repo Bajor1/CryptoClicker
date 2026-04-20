@@ -7,6 +7,7 @@ import ComponentsShelf from './ComponentsShelf.js'
 import NicornMB from './componentsCode/motherboard/NicornMB.js'
 import Motherboard from './componentsCode/motherboard/Motherboard.js'
 import PowerSupply from './componentsCode/powerSupply/PowerSupply.js'
+import Cooling from './componentsCode/cooling/Cooling.js'
 
 import { useState, useRef, useEffect } from "react";
 
@@ -123,8 +124,28 @@ function Components(props)
           </div>
         </div>
 
-        <div className="fansInput">
-          <div className="visual">
+        <div className="fansInput" onClick={() => showShelf("cooling", 0)}>
+          <Cooling
+              selectedCoolingID={props.selectedCoolingID} //obecnie wsadzony komponent
+
+              stashedCoolings={props.stashedCoolings} 
+              stashedPowerSupplies={props.stashedPowerSupplies} 
+              stashedGPUs={props.stashedGPUs}
+              stashedMotherboards={props.stashedMotherboards}
+                
+              selectedShelfStash={selectedShelfStash}
+                
+              //stale wartosci
+              cooling={props.cooling}
+              powerSupply={props.powerSupply}
+              GPU={props.GPU}
+              motherboard={props.motherboard}
+                
+              //funkcje
+              calculateIncome={props.calculateIncome}
+              changeComponent={props.changeComponent}
+            ></Cooling>
+          <div className="visual" style={{ marginTop: (props.selectedCoolingID==-1 ? "0" : "-500%") }}>
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>

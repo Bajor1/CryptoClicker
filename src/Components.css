@@ -35,6 +35,8 @@ body
   background-size: cover;
   background-position: center;
   filter:brightness(100%);
+  z-index: 9000;
+  position: relative;
 }
 .screw
 {
@@ -45,22 +47,23 @@ body
   background-size: cover;
   background-position: center;
   filter:brightness(150%);
+  z-index: 9001 !important;
 }
 .screw:nth-child(2)
 {
-  margin: -820px 0 0 0px
+  margin: -820px 0 0 0px;
 }
 .screw:nth-child(3)
 {
-  margin: -820px 0 0 800px
+  margin: -820px 0 0 800px;
 }
 .screw:nth-child(4)
 {
-  margin: -120px 0 0 800px
+  margin: -120px 0 0 800px;
 }
 .screw:nth-child(5)
 {
-  margin: -120px 0 0 0px
+  margin: -120px 0 0 0px;
 }
 .counterOutline
 {
@@ -196,6 +199,7 @@ body
   transition: 0.5s;
   cursor: pointer;
 }
+
 .fansInput:hover > .visual
 {
   transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);

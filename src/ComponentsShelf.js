@@ -73,6 +73,24 @@ function ComponentsShelf(props) {
                   <div className="effectApplier"></div>
                 </div>
               </div>
+            </div>)) : selectedShelfStash == "cooling" ? props.cooling
+          .filter(x => props.stashedCoolings.includes(x.id))
+            .map(item => (
+            <div className="componentItem" onClick={() => props.changeComponent("cooling", item.id, props.selectedCoolingID, props.selectedShelfIndex)}>
+              <div className="stickyNote">
+                <div className="stickyNoteInside">
+                  <h3>{item.name}</h3>
+                  <h4>{item.brand}</h4>
+                  <h5>Cooling: {item.cooling} °C</h5>
+                  <h5>Power cost: {item.powerCost} W</h5>
+                </div>
+                <div className="visual">
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                  <div className="effectApplier"></div>
+                </div>
+              </div>
             </div>)) : ""}
       </div>
     </div>
