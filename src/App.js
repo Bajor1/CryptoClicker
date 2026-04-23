@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 import Components from './Components';
 import Monitor from './Monitor';
@@ -9,14 +9,15 @@ import Header from './Header';
 
 function App() {
   const [currentUI, setCurrentUI] = useState("Monitor");
-  
+
+
   const GPU = [
     {
       id: 0,
       brand: "Compressio",
       name: "GePower GT 1030",
       powerCost: 50,
-      computingPower: 10,
+      computingPower: 1,
       generatedHeat: 30,
       optimalHeat: 50,
       cost: 100
@@ -26,7 +27,7 @@ function App() {
       brand: "Compressio",
       name: "GePower GTX 1050",
       powerCost: 60,
-      computingPower: 15,
+      computingPower: 1.5,
       generatedHeat: 40,
       optimalHeat: 60,
       cost: 150
@@ -36,7 +37,7 @@ function App() {
       brand: "Compressio",
       name: "GePower GTX 1650",
       powerCost: 90,
-      computingPower: 20,
+      computingPower: 2,
       generatedHeat: 80,
       optimalHeat: 95,
       cost: 250
@@ -46,7 +47,7 @@ function App() {
       brand: "MegaByte",
       name: "GePower GTX 1650",
       powerCost: 90,
-      computingPower: 23,
+      computingPower: 2.3,
       generatedHeat: 90,
       optimalHeat: 95,
       cost: 260
@@ -56,7 +57,7 @@ function App() {
       brand: "Acwer",
       name: "GePower GTX 1660",
       powerCost: 110,
-      computingPower: 25,
+      computingPower: 2.5,
       generatedHeat: 100,
       optimalHeat: 105,
       cost: 300
@@ -66,7 +67,7 @@ function App() {
       brand: "Compressio",
       name: "GePower GTX 1660",
       powerCost: 150,
-      computingPower: 30,
+      computingPower: 3.0,
       generatedHeat: 110,
       optimalHeat: 105,
       cost: 300
@@ -76,7 +77,7 @@ function App() {
       brand: "AXD",
       name: "Radeoff 550",
       powerCost: 100,
-      computingPower: 25,
+      computingPower: 2.5,
       generatedHeat: 100,
       optimalHeat: 105,
       cost: 330
@@ -86,7 +87,7 @@ function App() {
       brand: "Compressio",
       name: "GePower RTX 2050",
       powerCost: 200,
-      computingPower: 40,
+      computingPower: 4.0,
       generatedHeat: 150,
       optimalHeat: 155,
       cost: 630
@@ -96,7 +97,7 @@ function App() {
       brand: "HellForged",
       name: "GeVilPower RTX 2050",
       powerCost: 210,
-      computingPower: 50,
+      computingPower: 6.0,
       generatedHeat: 200,
       optimalHeat: 165,
       cost: 650
@@ -106,7 +107,7 @@ function App() {
       brand: "MegaByte",
       name: "GePower RTX 2080",
       powerCost: 240,
-      computingPower: 50,
+      computingPower: 8.0,
       generatedHeat: 140,
       optimalHeat: 125,
       cost: 800
@@ -116,37 +117,37 @@ function App() {
       brand: "Compressio",
       name: "GePower RTX 2080",
       powerCost: 270,
-      computingPower: 47,
+      computingPower: 12,
       generatedHeat: 110,
       optimalHeat: 125,
-      cost: 790
+      cost: 1090
     },
     {
       id: 11,
       brand: "Compressio",
       name: "GePower RTX 3050",
       powerCost: 300,
-      computingPower: 55,
+      computingPower: 13,
       generatedHeat: 130,
       optimalHeat: 145,
-      cost: 1000
+      cost: 1300
     },
     {
       id: 12,
       brand: "Acwer",
       name: "GePower RTX 3050",
       powerCost: 400,
-      computingPower: 60,
+      computingPower: 18,
       generatedHeat: 120,
       optimalHeat: 145,
-      cost: 1050
+      cost: 1350
     },
     {
       id: 13,
       brand: "Compressio",
       name: "GePower RTX 3090",
       powerCost: 500,
-      computingPower: 100,
+      computingPower: 20,
       generatedHeat: 200,
       optimalHeat: 210,
       cost: 2500
@@ -156,80 +157,80 @@ function App() {
       brand: "HellForged",
       name: "GePower RTX 3090",
       powerCost: 530,
-      computingPower: 120,
+      computingPower: 25,
       generatedHeat: 300,
       optimalHeat: 310,
-      cost: 2500
+      cost: 2800
     },
     {
       id: 15,
       brand: "HellForged",
       name: "GePower RTX 3090 TURBO",
       powerCost: 430,
-      computingPower: 120,
+      computingPower: 30,
       generatedHeat: 600,
       optimalHeat: 1000,
-      cost: 2550
+      cost: 3550
     },
     {
       id: 16,
       brand: "Nicorn",
       name: "GePower RTX 3090 U",
       powerCost: 580,
-      computingPower: 120,
+      computingPower: 31,
       generatedHeat: 180,
       optimalHeat: 100,
-      cost: 2450
+      cost: 4450
     },
     {
       id: 17,
       brand: "Compressio",
       name: "GePower RTX 5000",
       powerCost: 730,
-      computingPower: 200,
+      computingPower: 40,
       generatedHeat: 280,
       optimalHeat: 300,
-      cost: 4050
+      cost: 7050
     },
     {
       id: 18,
       brand: "HellForged",
       name: "GeVilPower RTX 5000",
       powerCost: 700,
-      computingPower: 250,
+      computingPower: 50,
       generatedHeat: 800,
       optimalHeat: 1000,
-      cost: 4000
+      cost: 8500
     },
     {
       id: 19,
       brand: "MegaByte",
       name: "GePower RTX 5000",
       powerCost: 800,
-      computingPower: 190,
+      computingPower: 39,
       generatedHeat: 200,
       optimalHeat: 220,
-      cost: 3500
+      cost: 8000
     },
     {
       id: 20,
       brand: "[Unsigned]",
       name: "bigBoy 500",
       powerCost: 450,
-      computingPower: 150,
+      computingPower: 35,
       generatedHeat: 400,
       optimalHeat: 420,
-      cost: 3200
+      cost: 7000
     },
     {
       id: 21,
       brand: "[Unsigned]",
       name: "smallBoy 500",
       powerCost: 300,
-      computingPower: 140,
+      computingPower: 27,
       generatedHeat: 400,
       optimalHeat: 100,
-      cost: 2900
+      cost: 6000
     }
   ];
 
@@ -490,6 +491,15 @@ function App() {
 
     const [income, setIncome] = useState(0);
 
+    useEffect(() => {
+  const interval = setInterval(() => {
+    const currentIncome = calculateIncome();
+    setBitCoin(prev => prev + currentIncome * 0.001);
+    console.log(currentIncome);
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, [selectedPowerSupplyID, selectedCoolingID, selectedMotherboardID, selectedGPUsID]);
 
     function changeComponent(type, insertedComponentID, stashedComponentID, slot)
     {
@@ -549,6 +559,9 @@ function App() {
           if (selectedCoolingID == -1)
           {
             setSelectedCoolingID(insertedComponentID);
+            setStashedCoolings(prev => 
+            prev.filter(id => id !== insertedComponentID)
+          );
             break;
           }
           setStashedCoolings(prev => 
@@ -566,14 +579,23 @@ function App() {
           break;
         }
       }
-      calculateIncome();
     }
 
     function calculateIncome()
     {
       let currentTickIncome = 0;
+      if((selectedPowerSupplyID === -1 || selectedCoolingID === -1) || selectedMotherboardID === -1)
+      {
+        setIncome(currentTickIncome);
+        console.log(selectedPowerSupplyID)
+        console.log(selectedCoolingID )
+        console.log(selectedMotherboardID)
+        console.log("aaaaa")
+        return 0;
+      }
       let totalPowerBalance = powerSupply[selectedPowerSupplyID].powerOutput;
       let totalTemperatureBalance = cooling[selectedCoolingID].cooling;
+      
       for (let i = 0; i<=motherboard[selectedMotherboardID].slots-1; i++) //wykonuje sie tyle razy ile jest slotow na GPU na plycie glownej
       {
         if(selectedGPUsID[i] != -1)
@@ -610,10 +632,11 @@ function App() {
         //currentTickIncome = currentTickIncome - (currentTickIncome/100)*30*temperatureDiffPercentage;
       }
       setIncome(currentTickIncome);
+      return currentTickIncome;
     }
   return (
     <div className="App">
-      <Header setUI = {setCurrentUI}></Header>
+      <Header setUI = {setCurrentUI} bitCoin={bitCoin}></Header>
       {income}
       {currentUI == "Monitor" ? <Monitor></Monitor> : 
       currentUI == "Components" ? <Components 
