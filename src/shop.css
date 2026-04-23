@@ -1,0 +1,110 @@
+.shop {
+  width: 100vw;
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+}
+
+/* dark overlay for readability */
+.shop-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  background: rgba(0,0,0,0.55);
+}
+
+/* LEFT - SHELVES */
+.shop-left {
+  width: 450px;
+  padding: 15px;
+
+  overflow-y: auto;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(4px);
+}
+
+/* RIGHT - NPC AREA */
+.shop-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+}
+
+.npc {
+  font-size: 22px;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* SHELF (REALISTIC WOOD RACK) */
+.shelf {
+  margin-bottom: 18px;
+  background: rgba(40,40,40,0.8);
+  border-radius: 6px;
+  padding: 10px;
+
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,0.5);
+}
+
+.shelf-title {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* ITEMS ON SHELF */
+.shelf-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* ITEM CARD (NO TEXT UI) */
+.item-card {
+  width: 100px;
+  height: 120px;
+
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* IMAGE */
+.item-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* PRICE TAG */
+.item-price {
+  background: gold;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+
+  width: 100%;
+  text-align: center;
+
+  border-radius: 0 0 6px 6px;
+}

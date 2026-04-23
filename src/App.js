@@ -640,7 +640,10 @@ function App() {
         changeComponent={changeComponent}
         
         ></Components> : 
-    /*currentUI == "Shop" (else statement)*/ <Shop></Shop> }
+    /*currentUI == "Shop" (else statement)*/ <Shop  GPU={GPU}
+  motherboard={motherboard}
+  powerSupply={powerSupply}
+  cooling={cooling}/> }
     </div>
   );
 }
