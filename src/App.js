@@ -36,7 +36,7 @@ function App() {
       id: 2,
       brand: "Compressio",
       name: "GePower GTX 1650",
-      powerCost: 90,
+      powerCost: 50,
       computingPower: 2,
       generatedHeat: 80,
       optimalHeat: 95,
@@ -46,7 +46,7 @@ function App() {
       id: 3,
       brand: "MegaByte",
       name: "GePower GTX 1650",
-      powerCost: 90,
+      powerCost:60,
       computingPower: 2.3,
       generatedHeat: 90,
       optimalHeat: 95,
@@ -56,7 +56,7 @@ function App() {
       id: 4,
       brand: "Acwer",
       name: "GePower GTX 1660",
-      powerCost: 110,
+      powerCost: 80,
       computingPower: 2.5,
       generatedHeat: 100,
       optimalHeat: 105,
@@ -66,7 +66,7 @@ function App() {
       id: 5,
       brand: "Compressio",
       name: "GePower GTX 1660",
-      powerCost: 150,
+      powerCost: 90,
       computingPower: 3.0,
       generatedHeat: 110,
       optimalHeat: 105,
@@ -86,7 +86,7 @@ function App() {
       id: 7,
       brand: "Compressio",
       name: "GePower RTX 2050",
-      powerCost: 200,
+      powerCost: 100,
       computingPower: 4.0,
       generatedHeat: 150,
       optimalHeat: 155,
@@ -96,7 +96,7 @@ function App() {
       id: 8,
       brand: "HellForged",
       name: "GeVilPower RTX 2050",
-      powerCost: 210,
+      powerCost: 110,
       computingPower: 6.0,
       generatedHeat: 200,
       optimalHeat: 165,
@@ -106,7 +106,7 @@ function App() {
       id: 9,
       brand: "MegaByte",
       name: "GePower RTX 2080",
-      powerCost: 240,
+      powerCost: 140,
       computingPower: 8.0,
       generatedHeat: 140,
       optimalHeat: 125,
@@ -116,7 +116,7 @@ function App() {
       id: 10,
       brand: "Compressio",
       name: "GePower RTX 2080",
-      powerCost: 270,
+      powerCost: 170,
       computingPower: 12,
       generatedHeat: 110,
       optimalHeat: 125,
@@ -126,7 +126,7 @@ function App() {
       id: 11,
       brand: "Compressio",
       name: "GePower RTX 3050",
-      powerCost: 300,
+      powerCost: 100,
       computingPower: 13,
       generatedHeat: 130,
       optimalHeat: 145,
@@ -136,7 +136,7 @@ function App() {
       id: 12,
       brand: "Acwer",
       name: "GePower RTX 3050",
-      powerCost: 400,
+      powerCost: 200,
       computingPower: 18,
       generatedHeat: 120,
       optimalHeat: 145,
@@ -156,9 +156,9 @@ function App() {
       id: 14,
       brand: "HellForged",
       name: "GePower RTX 3090",
-      powerCost: 530,
+      powerCost: 230,
       computingPower: 25,
-      generatedHeat: 300,
+      generatedHeat: 200,
       optimalHeat: 310,
       cost: 2800
     },
@@ -166,9 +166,9 @@ function App() {
       id: 15,
       brand: "HellForged",
       name: "GePower RTX 3090 TURBO",
-      powerCost: 430,
+      powerCost: 200,
       computingPower: 30,
-      generatedHeat: 600,
+      generatedHeat: 250,
       optimalHeat: 1000,
       cost: 3550
     },
@@ -178,7 +178,7 @@ function App() {
       name: "GePower RTX 3090 U",
       powerCost: 580,
       computingPower: 31,
-      generatedHeat: 180,
+      generatedHeat: 120,
       optimalHeat: 100,
       cost: 4450
     },
@@ -186,19 +186,19 @@ function App() {
       id: 17,
       brand: "Compressio",
       name: "GePower RTX 5000",
-      powerCost: 730,
+      powerCost: 630,
       computingPower: 40,
-      generatedHeat: 280,
+      generatedHeat: 180,
       optimalHeat: 300,
-      cost: 7050
+      cost: 6050
     },
     {
       id: 18,
       brand: "HellForged",
       name: "GeVilPower RTX 5000",
-      powerCost: 700,
+      powerCost: 500,
       computingPower: 50,
-      generatedHeat: 800,
+      generatedHeat: 500,
       optimalHeat: 1000,
       cost: 8500
     },
@@ -206,17 +206,17 @@ function App() {
       id: 19,
       brand: "MegaByte",
       name: "GePower RTX 5000",
-      powerCost: 800,
+      powerCost: 150,
       computingPower: 39,
       generatedHeat: 200,
       optimalHeat: 220,
-      cost: 8000
+      cost: 9000
     },
     {
       id: 20,
       brand: "[Unsigned]",
       name: "bigBoy 500",
-      powerCost: 450,
+      powerCost: 350,
       computingPower: 35,
       generatedHeat: 400,
       optimalHeat: 420,
@@ -226,7 +226,7 @@ function App() {
       id: 21,
       brand: "[Unsigned]",
       name: "smallBoy 500",
-      powerCost: 300,
+      powerCost: 200,
       computingPower: 27,
       generatedHeat: 400,
       optimalHeat: 100,
@@ -307,110 +307,110 @@ function App() {
       id:0,
       brand:"BurglarPower",
       name:"V1 Super Platinum DELUXE gaming X3000",
-      powerOutput:"300W",
+      powerOutput:300,
       generatedHeat: 70,
       optimalHeat: 50,
-      cost: 200
+      cost: 500
     },
     {
       id:1,
       brand:"BurglarPower",
       name:"V2 Ultra energy W800 PERFORMENCE",
-      powerOutput:"450W",
+      powerOutput:450,
       generatedHeat: 80,
       optimalHeat: 60,
-      cost: 350
+      cost: 1050
     },
     {
       id:2,
       brand:"BurglarPower",
       name:"V3 Turbo Max ECO Power Boost",
-      powerOutput:"500W",
-      generatedHeat: 90,
+      powerOutput:500,
+      generatedHeat: 200,
       optimalHeat: 75,
-      cost: 430
+      cost: 1300
     },
 
     {
       id:3,
       brand:"Buccaneer",
       name:"PX200",
-      powerOutput:"350W",
+      powerOutput:350,
       generatedHeat: 40,
       optimalHeat: 50,
-      cost: 300
+      cost: 1500
     },
     {
       id:4,
       brand:"Buccaneer",
       name:"PX300eco",
-      powerOutput:"650W",
+      powerOutput:650,
       generatedHeat: 80,
       optimalHeat: 90,
-      cost: 600
+      cost: 6000
     },
     {
       id:5,
       brand:"Buccaneer",
       name:"TR500",
-      powerOutput:"1000W",
+      powerOutput:1000,
       generatedHeat: 100,
       optimalHeat: 105,
-      cost: 800
+      cost: 8000
     },
     {
       id:6,
       brand:"LoudiumPC",
       name:"Primo 500",
-      powerOutput:"500W",
+      powerOutput:500,
       generatedHeat: 50,
       optimalHeat: 80,
-      cost: 450
+      cost: 4500
     },
     {
       id:7,
       brand:"LoudiumPC",
       name:"Turbo 600 SUPER",
-      powerOutput:"750W",
+      powerOutput:750,
       generatedHeat: 70,
       optimalHeat: 100,
-      cost: 800
+      cost: 5000
     },
     {
       id:8,
       brand:"HellForged",
       name:"Evil Wizards Mana Forge 3000",
-      powerOutput:"1500W",
+      powerOutput:1500,
       generatedHeat: 300,
       optimalHeat: 100,
-      cost: 700
+      cost: 10666
     },
     {
       id:9,
       brand:"[Unsigned]",
       name:'\"I found this in my garage\"',
-      powerOutput:"700W",
+      powerOutput:700,
       generatedHeat: 200,
       optimalHeat: 50,
-      cost: 500
+      cost: 5000
     },
     {
       id:10,
       brand:"MegaByte",
       name:"750W G500F40 Gigantic Power",
-      powerOutput:"749W",
+      powerOutput:749,
       generatedHeat: 130,
       optimalHeat: 200,
-      cost: 800
+      cost: 6000
     },
     {
       id:11,
       brand:"MegaByte",
       name:"1200W V700X23F Turbo",
-      powerOutput:"749W",
+      powerOutput:749,
       generatedHeat: 200,
       optimalHeat: 300,
-      cost: 1300
+      cost: 8000
     }
   ];
 
@@ -443,33 +443,33 @@ function App() {
       id:3,
       brand: "Buccaneer",
       name: "Turbo Cool H3500",
-      cooling: 200,
+      cooling: 400,
       powerCost: 65,
-      cost: 700
+      cost: 1200
     },
     {
       id:4,
       brand: "Buccaneer",
       name: "Turbo Cool H4000 ECO",
-      cooling: 250,
+      cooling: 550,
       powerCost: 55,
-      cost: 800
+      cost: 3000
     },
     {
       id:5,
       brand: "LoudiumPC",
       name: "SuperCool Eco Power Focus Pocus",
-      cooling: 400,
+      cooling: 700,
       powerCost: 105,
-      cost: 1000
+      cost: 4000
     },
     {
       id:6,
       brand: "LoudiumPC",
       name: "SuperCool Eco Power Focus Pocus EXTREME EDITION",
-      cooling: 600,
+      cooling: 2000,
       powerCost: 155,
-      cost: 1600
+      cost: 10000
     }
   ]
 
@@ -506,21 +506,35 @@ function App() {
       switch(type)
       {
         case "motherboard":
-        {
-          if (selectedMotherboardID == -1)
-          {
-            setSelectedMotherboardID(insertedComponentID);
-            break;
-          }
-          setStashedMotherboards(prev => 
-            prev.filter(id => id !== insertedComponentID)
-          );
-          setStashedMotherboards(prev => 
-            [...prev, selectedMotherboardID]
-          );
-          setSelectedMotherboardID(insertedComponentID);
-          break;
-        }
+{
+  const newSlots = motherboard[insertedComponentID].slots;
+
+  setSelectedGPUsID(prevGPUs => {
+    let updatedGPUs = [...prevGPUs];
+    const overflow = updatedGPUs.slice(newSlots).filter(id => id !== -1);
+    if (overflow.length > 0) {
+      setStashedGPUs(prev => [...prev, ...overflow]);
+    }
+    for (let i = newSlots; i < updatedGPUs.length; i++) {
+      updatedGPUs[i] = -1;
+    }
+    return updatedGPUs;
+  });
+  if (selectedMotherboardID == -1)
+  {
+    setSelectedMotherboardID(insertedComponentID);
+    break;
+  }
+  setStashedMotherboards(prev => 
+    prev.filter(id => id !== insertedComponentID)
+  );
+  setStashedMotherboards(prev => 
+    [...prev, selectedMotherboardID]
+  );
+
+  setSelectedMotherboardID(insertedComponentID);
+  break;
+}
         case "GPU":
         {
           setSelectedGPUsID(prev => {
@@ -621,15 +635,29 @@ function App() {
       }
       if (totalPowerBalance < 0)
       {
-        //kara za negatywny power balance
-        //let powerDiffPercentage = (-totalPowerBalance / powerSupply[selectedPowerSupplyID].powerOutput) /100;
-        //currentTickIncome = currentTickIncome - (currentTickIncome/100)*30*powerDiffPercentage;
+        const deficit = -totalPowerBalance;
+        const maxPower = powerSupply[selectedPowerSupplyID].powerOutput;
+      
+        let penaltyRatio = deficit / maxPower; // np. 0.2 = 20% brak
+        penaltyRatio = Math.min(penaltyRatio, 1); // max 100%
+      
+        const penalty = penaltyRatio * 0.5; // max -50%
+      
+        currentTickIncome *= (1 - penalty);
       }
+
+      // TEMPERATURE PENALTY
       if (totalTemperatureBalance < 0)
       {
-        //kara za negatywny power balance
-        //let temperatureDiffPercentage = (-totalTemperatureBalance / cooling[selectedCoolingID].cooling) /100;
-        //currentTickIncome = currentTickIncome - (currentTickIncome/100)*30*temperatureDiffPercentage;
+        const deficit = -totalTemperatureBalance;
+        const maxCooling = cooling[selectedCoolingID].cooling;
+      
+        let penaltyRatio = deficit / maxCooling;
+        penaltyRatio = Math.min(penaltyRatio, 1);
+      
+        const penalty = penaltyRatio * 0.5;
+      
+        currentTickIncome *= (1 - penalty);
       }
       setIncome(currentTickIncome);
       return currentTickIncome;

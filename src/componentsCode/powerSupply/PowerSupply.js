@@ -16,7 +16,7 @@ function PowerSupply(props) {
     <div className={selectedPS.brand + "PS PS"}>
       <span className={selectedPS.brand + "Brand"}>{selectedPS.brand}<br></br></span>
       <span className={selectedPS.brand + "Name"}>{selectedPS.name}<br></br></span>
-      <span className={selectedPS.brand + "Power"}>{selectedPS.powerOutput}<br></br></span>
+      <span className={selectedPS.brand + "Power"}>{selectedPS.powerOutput}W<br></br></span>
     </div>
   );
 }
