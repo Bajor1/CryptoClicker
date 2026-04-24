@@ -273,3 +273,64 @@ body
 {
   transform: translateX(1000px);
 }
+.deleteButton
+{
+  display: none;
+  transform: 1s;
+  scale: 100%;
+  width: 50px;
+  height: 50px;
+  background-color:rgb(255, 65, 65);
+  border: solid 5px rgb(255, 134, 134);
+  border-radius: 10px;
+  opacity: 0.8;
+  background-image: url("misc/X.png");
+  background-size: contain;
+  animation: wiggle 2s infinite ease-in-out;
+}
+.deleteButton > .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
+.deleteButton > .visual > .effectApplier
+{
+  backdrop-filter: contrast(1) invert()
+}
+@keyframes wiggle
+{
+  0%  {transform:rotate(-10deg);}
+  50% {transform:rotate(10deg);}
+  100%{transform:rotate(-10deg);}
+}
+.deleteButton:hover
+{
+  scale: 110%;
+}
+.interactableComponent:hover > .deleteButton
+{
+  display:block;
+}
+.fansInput > .deleteButton
+{
+  margin-top:-530px;
+  margin-left:-30px;
+}
+.powerSupplyInput > .deleteButton
+{
+  margin-top:-230px;
+  margin-left:-30px;
+}
+.motherboardInput > .deleteButton
+{
+  margin-top:-480px;
+  margin-left:-30px;
+}
+.GPU > .deleteButton
+{
+  margin-top:-55px;
+  margin-left:-15px;
+  width: 25px;
+  height: 25px;
+}
+.displayNone
+{display: none;}

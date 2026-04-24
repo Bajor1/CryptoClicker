@@ -39,6 +39,7 @@ function Motherboard(props)
             selectedGPUsID = {props.selectedGPUsID}
             calculateIncome={props.calculateIncome}
             changeComponent={props.changeComponent}
+            showShelf={props.showShelf}
             
           ></GPU>
           : 
@@ -47,7 +48,9 @@ function Motherboard(props)
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
-          </div> }
+          </div> 
+          
+          }
           
         </div>
       )}

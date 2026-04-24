@@ -3,7 +3,7 @@ import './App.css';
 import './Header.css';
 import { useState, useEffect } from 'react';
 
-function Header({setUI}) {
+function Header({setUI, bitCoin}) {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const getWidth = () => {
@@ -30,7 +30,7 @@ function Header({setUI}) {
       <div className='headerBG'>
         <div className="smallTile"></div>
       </div>
-      <h1>Crypto Clicker</h1>
+      <h1>Crypto Clicker | Bitcoins: {bitCoin}</h1>
       <button className="pulpitBG" onClick={() => setUI("Monitor")}><div className="buttonFG" >Puplit</div></button>
       <button className="componentsBG" onClick={() => setUI("Components")}><div className="buttonFG">Komponenty</div></button>
       <button className="shopBG" onClick={() => setUI("Shop")}><div className="buttonFG">Sklep</div></button>

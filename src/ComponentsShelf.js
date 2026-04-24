@@ -42,8 +42,8 @@ function ComponentsShelf(props) {
                 <div className="stickyNoteInside">
                   <h3>{item.name}</h3>
                   <h4>{item.brand}</h4>
-                  <h5>Slots: {item.slots}</h5>
-                  <h5>Chipset: {item.chipset}</h5>
+                  <h5>Power output: {item.powerOutput}</h5>
+                  <h5>Generated Heat: {item.generatedHeat}</h5>
                 </div>
                 <div className="visual">
                   <div className="effectApplier"></div>

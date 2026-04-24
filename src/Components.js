@@ -48,7 +48,7 @@ function Components(props)
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         <FallingElement props={["screw", IncrementUnscrewedScrews]}/>
         
-        <div className="motherboardInput" 
+        <div className="motherboardInput interactableComponent" 
           onClick={() => showShelf("motherboard", 0)}>
         <Motherboard 
         setIsSlotHovered={setIsSlotHovered} //fix do problemu z hoverem parenta podczas hovera na dziecko
@@ -91,9 +91,21 @@ function Components(props)
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
           </div>
+
+          <div className={props.selectedMotherboardID==-1 ? "displayNone" : "deleteButton"} onClick={() => {
+            showShelf("", 0);
+            props.changeComponent("motherboard", -1, props.selectedMotherboardID, 0);
+          }}>
+            <div className="visual" style={{ marginTop: "-0%" }}>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+            </div>
+          </div>
         </div>
 
-        <div className="powerSupplyInput" onClick={() => showShelf("powerSupply", 0)}>
+        <div className="powerSupplyInput interactableComponent" onClick={() => showShelf("powerSupply", 0)}>
 
             <PowerSupply
               selectedPowerSupplyID={props.selectedPowerSupplyID} //obecnie wsadzony komponent
@@ -122,10 +134,21 @@ function Components(props)
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
           </div>
+          <div className={props.selectedPowerSupplyID==-1 ? "displayNone" : "deleteButton"} onClick={() => {
+            showShelf("", 0);
+            props.changeComponent("powerSupply", -1, props.selectedPowerSupplyID, 0);
+          }}>
+            <div className="visual" style={{ marginTop: "-0%" }}>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+            </div>
+          </div>
         </div>
 
-        <div className="fansInput" onClick={() => showShelf("cooling", 0)}>
-          <Cooling
+        <div className="fansInput interactableComponent" onClick={() => showShelf("cooling", 0)}>
+          <Cooling 
               selectedCoolingID={props.selectedCoolingID} //obecnie wsadzony komponent
 
               stashedCoolings={props.stashedCoolings} 
@@ -150,6 +173,17 @@ function Components(props)
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
             <div className="effectApplier"></div>
+          </div>
+          <div className={props.selectedCoolingID==-1 ? "displayNone" : "deleteButton"} onClick={() => {
+            showShelf("", 0);
+            props.changeComponent("cooling", -1, props.selectedCoolingID, 0);
+          }}>
+            <div className="visual" style={{ marginTop: "-0%" }}>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+            </div>
           </div>
         </div>
       </div>
