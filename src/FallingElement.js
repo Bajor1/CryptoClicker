@@ -46,7 +46,6 @@ function FallingElement(props) {
         prev[2] - (0.1 + Math.abs(prev[2]) / 100)
       ];
     
-      console.log(newVelocity);
     
       setTranslate(pos => ({
         x: pos.x + newVelocity[0],
