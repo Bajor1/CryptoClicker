@@ -325,5 +325,12 @@ body
   margin-top:-480px;
   margin-left:-30px;
 }
+.GPU > .deleteButton
+{
+  margin-top:-55px;
+  margin-left:-15px;
+  width: 25px;
+  height: 25px;
+}
 .displayNone
 {display: none;}

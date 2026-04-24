@@ -39,12 +39,23 @@ function GPU(props) {
   );
 
   return (
-    <div className={imgclass[selectedGPU.id]+" GPU"} title={selectedGPU.name+" "+selectedGPU.id}>
+    <div className={imgclass[selectedGPU.id]+" GPU interactableComponent"} title={selectedGPU.name+" "+selectedGPU.id}>
       <div className="visual">
-            <div className="effectApplier"></div>
-            <div className="effectApplier"></div>
-            <div className="effectApplier"></div>
-            <div className="effectApplier"></div>
+        <div className="effectApplier"></div>
+        <div className="effectApplier"></div>
+        <div className="effectApplier"></div>
+        <div className="effectApplier"></div>
+      </div>
+      <div className="deleteButton" onClick={() => {
+            props.showShelf("", 0);
+            props.changeComponent("GPU", -1, selectedGPU.id, props.index);
+          }}>
+            <div className="visual" style={{ marginTop: "-0%" }}>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+              <div className="effectApplier"></div>
+            </div>
           </div>
     </div>
   );
