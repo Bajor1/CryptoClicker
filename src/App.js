@@ -665,7 +665,6 @@ function App() {
   return (
     <div className="App">
       <Header setUI = {setCurrentUI} bitCoin={bitCoin}></Header>
-      {income}
       {currentUI == "Monitor" ? <Monitor></Monitor> : 
       currentUI == "Components" ? <Components 
         //wszystkie posiadanie komponenty
