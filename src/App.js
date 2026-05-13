@@ -484,10 +484,10 @@ function App() {
     const [minRandomGenValue, setMinRandomGenValue] = useState(0.6);
     const [maxRandomGenValue, setMaxRandomGenValue] = useState(1);
 
-    const [stashedGPUs, setStashedGPUs] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]);
-    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([0,1,2,3,4,5,6,7,8,9,10,11]);
-    const [stashedCoolings, setStashedCoolings] = useState([0,1,2,3,4,5,6]);
-    const [stashedMotherboards, setStashedMotherboards] = useState([1,2,3,4,5,6,7]);
+    const [stashedGPUs, setStashedGPUs] = useState([]);
+    const [stashedPowerSupplies, setStashedPowerSupplies] = useState([]);
+    const [stashedCoolings, setStashedCoolings] = useState([]);
+    const [stashedMotherboards, setStashedMotherboards] = useState([]);
 
     const [income, setIncome] = useState(0);
 
@@ -690,10 +690,21 @@ function App() {
         changeComponent={changeComponent}
         
         ></Components> : 
-    /*currentUI == "Shop" (else statement)*/ <Shop  GPU={GPU}
-  motherboard={motherboard}
-  powerSupply={powerSupply}
-  cooling={cooling}/> }
+        /*currentUI == "Shop" (else statement)*/ <Shop  
+        GPU={GPU}
+        motherboard={motherboard}
+        powerSupply={powerSupply}
+        cooling={cooling}
+
+        setStashedGPUs={setStashedGPUs}
+        setStashedPowerSupplies={setStashedPowerSupplies}
+        setStashedMotherboards={setStashedMotherboards}
+        setStashedCoolings={setStashedCoolings}
+
+        stashedGPUs={stashedGPUs}
+        stashedPowerSupplies={stashedPowerSupplies}
+        stashedMotherboards={stashedMotherboards}
+        stashedCoolings={stashedCoolings} /> }
     </div>
   );
 }
