@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { createChart, CandlestickSeries } from "lightweight-charts";
 import "./market.css";
 
-function MarketWatch({ coins, onSell, data }) {
+function MarketWatch({ coins, onSell, data, bitCoin, setBitCoin, money, setMoney }) {
   const chartRef = useRef();
   const chartInstance = useRef(null);
   const seriesRef = useRef(null);
@@ -57,7 +57,6 @@ function MarketWatch({ coins, onSell, data }) {
 
   const handleSell = () => {
     const value = coins * currentPrice;
-
     setPopup({
       value,
     });
@@ -70,21 +69,21 @@ function MarketWatch({ coins, onSell, data }) {
     <div className="market-app">
       <h2>MarketWatch</h2>
 
-      <p>Coins available to sell: {coins}</p>
+      <p>Coins available to sell: {bitCoin}</p>
 
       <div ref={chartRef} style={ { border: "2px solid #4caf50", borderRadius: "4px", boxSizing: "border-box"}}/>
 
       <h3 style={{ color: "#4caf50" }}>
-        Coin value: ${currentPrice.toFixed(2)}
+        Bitcoin value: ${currentPrice.toFixed(2)}
       </h3>
 
       <button className="sell-btn" onClick={() => {
-        const value = coins * currentPrice;
+        var value = bitCoin * currentPrice;
 
         setPopup({
         value,
         });
-
+        setMoney(prev => prev + value);
         onSell(currentPrice);
       }}>Sell coins</button>
       {popup && (

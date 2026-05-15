@@ -14,7 +14,7 @@ function Cooling(props) {
 
   return (
     <div className={selectedC.brand + "C C"} title={selectedC.brand + " " + selectedC.name}>
-
+      
     </div>
   );
 }

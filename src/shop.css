@@ -6,11 +6,87 @@
   position: relative;
   overflow: hidden;
 }
-
-.shelf {
-  position: absolute;
-  bottom: 0;
-  left: -10px;
-  width: 70%; /* zmniejsz trochę */
-  left: -10px;
+.shelves
+{
+  background-image: url("./misc/regal.png");
+  background-size: cover;
+  width: 1000px;
+  height: 580px;
+  padding-top:30px
+}
+.shopItem
+{
+  margin-bottom:20px;
+  margin-left:120px;
+  float:left;
+  cursor: pointer;
+  background-image: url("./misc/box.png");
+  width:140px;
+  height: 100px;
+  background-size: cover;
+}
+.shopTextFormating
+{
+  transform:
+    perspective(800px)
+    rotateX(5deg)
+    rotateZ(0deg)
+    rotateY(55deg);
+}
+.shopItemBrand
+{
+  padding-top:25px;
+  margin-top:0px;
+  font-size:15px;
+}
+.shopItemName
+{
+  margin-top:-15px;
+  font-size:15px;
+  width:70px;
+  transform:
+    perspective(800px)
+    rotateX(10deg)
+    rotateZ(0deg)
+    rotateY(10deg);
+    display: -webkit-box;
+  -webkit-line-clamp: 2; /* maks 2 linie */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.shopItemCost
+{
+  margin-top:-25px;
+  padding-left:60px;
+  font-size:30px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:greenyellow;
+  text-shadow: 0px 0px 18px #39f01d;
+}
+.shopItem:hover
+{
+  animation-name: wiggle;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.shopItem:nth-child(1)
+{
+  margin-left:50px;
+}
+.shopItem:nth-child(3)
+{
+  margin-left:50px;
+}
+.shopItem:nth-child(5)
+{
+  margin-left:60px;
+}
+.shopItem:nth-child(6)
+{
+  margin-left:150px;
+}
+.shopItem:nth-child(7)
+{
+  margin-left:30px;
 }

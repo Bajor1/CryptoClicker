@@ -296,6 +296,10 @@ body
 {
   backdrop-filter: contrast(1) invert()
 }
+.shopItem:hover > .visual
+{
+  transform: rotate3D(1, 1, 1, 0deg) rotate(0deg) scale(100%);
+}
 @keyframes wiggle
 {
   0%  {transform:rotate(-10deg);}

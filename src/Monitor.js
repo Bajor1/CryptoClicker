@@ -166,7 +166,7 @@ function Window({ title, onClose, children, onFocus, zIndex }) {
 }
 
 
-function Monitor() {
+function Monitor(props) {
   const [openWindows, setOpenWindows] = useState([]);
   const [zCounter, setZCounter] = useState(10);
   const [coins, setCoins] = useState(() => {
@@ -309,15 +309,19 @@ const marketTimeRef = useRef(
               onClose={() => closeWindow(win.id)}
             >
               {win.name === "Miner.exe" && (
-                <MinerApp coins={coins} setCoins={setCoins} onCrash={() => closeWindow(win.id)} />
+                <MinerApp coins={props.bitCoin} setCoins={props.setBitCoin} onCrash={() => closeWindow(win.id)} />
               )}
               {win.name === "Internet" && <p><b>ERROR: No internet connection :(</b></p>}
               {win.name === "MarketWatch.exe" && (
               <MarketWatch 
-                coins={coins} 
+                bitCoin = {props.bitCoin}
+                setBitCoin = {props.SetBitCoin}
+                money= {props.money}
+                setMoney={props.setMoney}
+                coins={props.bitCoin} 
                 data={marketData}
                   onSell={(price) => { 
-                  setCoins(0);
+                  props.setBitCoin(0);
                 }} 
               />
             )}
