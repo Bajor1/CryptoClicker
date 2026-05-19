@@ -10,7 +10,6 @@ import Header from './Header';
 function App() {
   const [currentUI, setCurrentUI] = useState("Monitor");
 
-
   const GPU = [
     {
       id: 0,
@@ -472,7 +471,7 @@ function App() {
       cost: 10000
     }
   ]
-
+    const [shopStock, setShopStock] = useState(() => generateShopStock());
     const [bitCoin, setBitCoin] = useState(0);
     const [money, setMoney] = useState(0);
     const [BitCoinIncome, setBitCoinIncome] = useState(0);
@@ -491,8 +490,26 @@ function App() {
 
     const [income, setIncome] = useState(0);
 
+    //reset itemow sklepu
+  function generateShopStock() {
+  return {
+        gpu: Array.from({ length: 6 }, () => Math.floor(Math.random() * GPU.length)),
+        psu: Array.from({ length: 4 }, () => Math.floor(Math.random() * powerSupply.length)),
+        mb: Array.from({ length: 2 }, () => Math.floor(Math.random() * motherboard.length)),
+        cooling: Array.from({ length: 2 }, () => Math.floor(Math.random() * cooling.length))
+      };
+    }
+
     useEffect(() => {
-  const interval = setInterval(() => {
+      const interval = setInterval(() => {
+        setShopStock(generateShopStock());
+      }, 300000);
+    
+      return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+    const interval = setInterval(() => {
     const currentIncome = calculateIncome();
     setBitCoin(prev => prev + currentIncome * 0.001);
     console.log(currentIncome);
@@ -520,6 +537,9 @@ function App() {
     }
     return updatedGPUs;
   });
+
+  
+  
   if (selectedMotherboardID == -1)
   {
     setSelectedMotherboardID(insertedComponentID);
@@ -700,7 +720,9 @@ function App() {
         motherboard={motherboard}
         powerSupply={powerSupply}
         cooling={cooling}
-
+        shopStock={shopStock}
+        setShopStock={setShopStock}
+        
         setStashedGPUs={setStashedGPUs}
         setStashedPowerSupplies={setStashedPowerSupplies}
         setStashedMotherboards={setStashedMotherboards}
