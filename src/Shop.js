@@ -4,12 +4,19 @@ import bg from "./misc/sklep_bkg.png";
 import regal from "./misc/regal.png";
 import { useState, useEffect } from "react";
 
+import shopkeeperIdle from "./misc/bart_palec.png";
+import shopkeeperTalk from "./misc/bart_palec_buzia.png";
+
 export default function Shop(props) {
 
   const [randomizedGPUs, setRandomizedGPUs] = useState([0,0,0,0,0,0]);
   const [randomizedPowerSupplies, setRandomizedPowerSupplies] = useState([0, 0, 0, 0]);
   const [randomizedMotherboards, setRandomizedMotherboards] = useState([0, 0]);
   const [randomizedCoolings, setRandomizedCoolings] = useState([0, 0]);
+
+
+  const [shopkeeperTalking, setShopkeeperTalking] = useState(false);
+  const [shopkeeperText, setShopkeeperText] = useState("");
   
   function randomizeShop()
   {
@@ -96,6 +103,33 @@ export default function Shop(props) {
   
   }, []);
 
+
+  function shopkeeperSpeak(text)
+  {
+    setShopkeeperText(text);
+
+    let talking = true;
+    let count = 0;
+
+    const interval = setInterval(() => {
+      setShopkeeperTalking(prev => !prev);
+
+      count++;
+
+      if (count > 8)
+      {
+        clearInterval(interval);
+
+        setShopkeeperTalking(false);
+
+        setTimeout(() => {
+          setShopkeeperText("");
+        }, 1500);
+      }
+    }, 120);
+  }
+
+
   return (
     <div
       className="shop"
@@ -109,6 +143,13 @@ export default function Shop(props) {
     <div
       key={index}
       className="shopItem"
+
+      onMouseEnter={() =>
+      shopkeeperSpeak(
+        `Nowiutki ${props.GPU[gpuID].name}! Tylko ${props.GPU[gpuID].cost}$!`
+      )
+    }
+
       onClick={() =>
         buyComponent(
           "GPU",
@@ -137,7 +178,6 @@ export default function Shop(props) {
         <div className="effectApplier"></div>
         <div className="effectApplier"></div>
       </div>
-
     </div>
   ))}
 </div>
@@ -146,6 +186,13 @@ export default function Shop(props) {
     <div
       key={index}
       className="shopItem"
+
+      onMouseEnter={() =>
+        shopkeeperSpeak(
+          `Nowiutki ${props.powerSupply[psuID].name}! Tylko ${props.powerSupply[psuID].cost}$!`
+        )
+      }
+
       onClick={() =>
         buyComponent(
           "powerSupply",
@@ -185,6 +232,13 @@ export default function Shop(props) {
     <div
       key={index}
       className="shopItem"
+
+      onMouseEnter={() =>
+        shopkeeperSpeak(
+          `Nowiutki ${props.motherboard[mbID].name}! Tylko ${props.motherboard[mbID].cost}$!`
+        )
+      }
+
       onClick={() =>
         buyComponent(
           "motherboard",
@@ -258,6 +312,27 @@ export default function Shop(props) {
     </div>
   ))}
 </div>
+
+<div className="shopkeeperContainer">
+
+  <img
+    src={
+      shopkeeperTalking
+      ? shopkeeperTalk
+      : shopkeeperIdle
+    }
+    className="shopkeeper"
+    alt="shopkeeper"
+  />
+
+  {shopkeeperText !== "" && (
+    <div className="speechBubble">
+      {shopkeeperText}
+    </div>
+  )}
+
+</div>
+
       </div>
     </div>
   );
