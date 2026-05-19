@@ -664,8 +664,13 @@ function App() {
     }
   return (
     <div className="App">
-      <Header setUI = {setCurrentUI} bitCoin={bitCoin}></Header>
-      {currentUI == "Monitor" ? <Monitor></Monitor> : 
+      <Header setUI = {setCurrentUI} bitCoin={bitCoin} money={money}></Header>
+      {currentUI == "Monitor" ? <Monitor
+      bitCoin = {bitCoin}
+      setBitCoin = {setBitCoin}
+      money = {money}
+      setMoney = {setMoney}
+      ></Monitor> : 
       currentUI == "Components" ? <Components 
         //wszystkie posiadanie komponenty
         stashedCoolings={stashedCoolings} 
