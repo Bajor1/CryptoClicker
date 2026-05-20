@@ -17,8 +17,32 @@
   position: relative;
 }
 
+.shopTextFormating h3
+{
+  margin: 0;
+  padding-top: 18px;
+
+  font-size: 14px;
+}
+
+.shopTextFormating p
+{
+  margin: 0;
+
+  font-size: 13px;
+
+  width: 75px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
 .shopItem
 {
+  position: relative;
   margin-bottom:20px;
   margin-left:120px;
   float:left;
@@ -35,6 +59,7 @@
 
 .shopTextFormating
 {
+  height: 60px;
   transform:
     perspective(800px)
     rotateX(5deg)
@@ -69,8 +94,12 @@
 
 .shopItemCost
 {
-  margin-top:-25px;
-  padding-left:60px;
+  position: absolute;
+
+  bottom: 6px;
+  right: 12px;
+
+  margin: 0;
   font-size:30px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:greenyellow;
@@ -118,11 +147,11 @@
 {
   position: absolute;
 
-  bottom: 0;
-  right: 40px;
+  bottom: -70vh;
+  right: -90%;
 
-  width: 320px;
-  height: 420px;
+  width: 620px;
+  height: 720px;
 
   pointer-events: none;
 }
@@ -134,7 +163,7 @@
   bottom: 0;
   right: 0;
 
-  width: 320px;
+  width: 620px;
   image-rendering: pixelated;
 
   z-index: 5;

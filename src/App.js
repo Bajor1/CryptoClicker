@@ -715,7 +715,9 @@ function App() {
         changeComponent={changeComponent}
         
         ></Components> : 
-        /*currentUI == "Shop" (else statement)*/ <Shop  
+        /*currentUI == "Shop" (else statement)*/ <Shop 
+        money={money} 
+        setMoney={setMoney}
         GPU={GPU}
         motherboard={motherboard}
         powerSupply={powerSupply}

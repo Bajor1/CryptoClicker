@@ -37,7 +37,36 @@ export default function Shop(props) {
   }
 
   function buyComponent(type, componentID) {
-  shopkeeperBuyReaction("Dzięki za zakup!");
+
+    let item;
+
+    if (type === "GPU") {
+      item = GPU[componentID];
+    }
+
+    else if (type === "powerSupply") {
+      item = PSU[componentID];
+    }
+
+    else if (type === "motherboard") {
+      item = MB[componentID];
+    }
+
+    else if (type === "cooling") {
+      item = COOL[componentID];
+    }
+
+    if (!item) return;
+
+    // BRAK KASY
+    if (props.money < item.cost) {
+      shopkeeperSpeak("Nie stać cię na to!");
+      return;
+    }
+
+    // ODEJMUJEMY PIENIĄDZE
+    props.setMoney(prev => prev - item.cost);
+    shopkeeperBuyReaction("Dzięki za zakup!");
 
   if (type === "GPU") {
     props.setStashedGPUs(prev => [...prev, componentID]);
